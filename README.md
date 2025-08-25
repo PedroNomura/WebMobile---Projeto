@@ -1,7 +1,5 @@
 # Nome do Site (SEI NÃO)
 
----
-
 ## Integrantes
 
 + [Felipe Mazzeo Barboza](https://github.com/ManoTilts/ManoTilts) - 10402808
