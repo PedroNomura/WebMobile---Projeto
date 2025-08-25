@@ -19,8 +19,8 @@
         </a>
       </td>
       <td style="padding: 10px; text-align: center; vertical-align: middle;">
-        <a href="" target="_blank">
-          <img src="" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
+        <a href="https://github.com/KonradoRibeiro" target="_blank">
+          <img src="https://avatars.githubusercontent.com/u/182453931?v=4" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
         </a>
       </td>
       <td style="padding: 10px; text-align: center; vertical-align: middle;">
