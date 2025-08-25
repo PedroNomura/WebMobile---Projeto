@@ -2,10 +2,55 @@
 
 ## Integrantes
 
+<table>
+  <thead>
+    <tr>
+      <th>Felipe Mazzeo Barboza</th>
+      <th>Konrado Ribeiro Filho</th>
+      <th>Pedro Nomura Picchioni</th>
+      <th>Victor Vaglieri de Oliveira</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://github.com/ManoTilts/ManoTilts" target="_blank">
+          <img src="https://avatars.githubusercontent.com/u/99353851?v=4" style="width: 150px; height: 150px;"/>
+        </a>
+      </td>
+      <td>
+        <a href="" target="_blank">
+          <img src="https://avatars.githubusercontent.com/u/179884428?v=4" style="width: 150px; height: 150px;"/>
+        </a>
+      </td>
+      <td>
+        <a href="https://github.com/PedroNomura" target="_blank">
+          <img src="https://avatars.githubusercontent.com/u/110983994?v=4" style="width: 150px; height: 150px;"/>
+        </a>
+      </td>
+      <td>
+        <a href="https://github.com/Victor-Vaglieri" target="_blank">
+          <img src="https://avatars.githubusercontent.com/u/127432508?v=4" style="width: 150px; height: 150px;"/>
+        </a>
+      </td>
+    </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>10402808</th>
+        <th>10435499</th>
+        <th>10401616</th>
+        <th>10400787</th>
+      </tr>
+    </tfoot>
+</table>
+
+<!--
 + [Felipe Mazzeo Barboza](https://github.com/ManoTilts/ManoTilts) - 10402808
 + [Konrado Ribeiro Filho]() - 10435499
 + [Pedro Nomura Picchioni](https://github.com/PedroNomura) - 10401616
 + [Victor Vaglieri de Oliveira](https://github.com/Victor-Vaglieri) - 10400787
+-->
 
 ## Ideação do Projeto
 
