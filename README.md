@@ -20,7 +20,7 @@
       </td>
       <td>
         <a href="" target="_blank">
-          <img src="https://avatars.githubusercontent.com/u/179884428?v=4" style="width: 150px; height: 150px;"/>
+          <img src="" style="width: 150px; height: 150px;"/>
         </a>
       </td>
       <td>
