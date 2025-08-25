@@ -5,10 +5,10 @@
 <table style="width: 100%; display:flex; border-collapse: collapse; text-align: center; align-items: center;">
   <thead>
     <tr>
-      <th style="padding: 10px; text-align: center;">Felipe Mazzeo Barboza</th>
-      <th style="padding: 10px; text-align: center;">Konrado Ribeiro Filho</th>
-      <th style="padding: 10px; text-align: center;">Pedro Nomura Picchioni</th>
-      <th style="padding: 10px; text-align: center;">Victor Vaglieri de Oliveira</th>
+      <th style="padding: 10px; text-align: center;"><a href="https://github.com/ManoTilts/ManoTilts" target="_blank">Felipe Mazzeo Barboza</th>
+      <th style="padding: 10px; text-align: center;"><a href="https://github.com/KonradoRibeiro" target="_blank">Konrado Ribeiro Filho</th>
+      <th style="padding: 10px; text-align: center;"><a href="https://github.com/PedroNomura" target="_blank">Pedro Nomura Picchioni</th>
+      <th style="padding: 10px; text-align: center;"><a href="https://github.com/Victor-Vaglieri" target="_blank">Victor Vaglieri de Oliveira </th>
     </tr>
   </thead>
   <tbody>
