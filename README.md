@@ -2,48 +2,49 @@
 
 ## Integrantes
 
-<table>
+<table style="width: 100%; display:flex; border-collapse: collapse; text-align: center; align-items: center;">
   <thead>
     <tr>
-      <th>Felipe Mazzeo Barboza</th>
-      <th>Konrado Ribeiro Filho</th>
-      <th>Pedro Nomura Picchioni</th>
-      <th>Victor Vaglieri de Oliveira</th>
+      <th style="padding: 10px; text-align: center;">Felipe Mazzeo Barboza</th>
+      <th style="padding: 10px; text-align: center;">Konrado Ribeiro Filho</th>
+      <th style="padding: 10px; text-align: center;">Pedro Nomura Picchioni</th>
+      <th style="padding: 10px; text-align: center;">Victor Vaglieri de Oliveira</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>
+      <td style="padding: 10px; text-align: center; vertical-align: middle;">
         <a href="https://github.com/ManoTilts/ManoTilts" target="_blank">
-          <img src="https://avatars.githubusercontent.com/u/99353851?v=4" style="width: 150px; height: 150px;"/>
+          <img src="https://avatars.githubusercontent.com/u/99353851?v=4" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
         </a>
       </td>
-      <td>
+      <td style="padding: 10px; text-align: center; vertical-align: middle;">
         <a href="" target="_blank">
-          <img src="" style="width: 150px; height: 150px;"/>
+          <img src="" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
         </a>
       </td>
-      <td>
+      <td style="padding: 10px; text-align: center; vertical-align: middle;">
         <a href="https://github.com/PedroNomura" target="_blank">
-          <img src="https://avatars.githubusercontent.com/u/110983994?v=4" style="width: 150px; height: 150px;"/>
+          <img src="https://avatars.githubusercontent.com/u/110983994?v=4" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
         </a>
       </td>
-      <td>
+      <td style="padding: 10px; text-align: center; vertical-align: middle;">
         <a href="https://github.com/Victor-Vaglieri" target="_blank">
-          <img src="https://avatars.githubusercontent.com/u/127432508?v=4" style="width: 150px; height: 150px;"/>
+          <img src="https://avatars.githubusercontent.com/u/127432508?v=4" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
         </a>
       </td>
     </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th>10402808</th>
-        <th>10435499</th>
-        <th>10401616</th>
-        <th>10400787</th>
-      </tr>
-    </tfoot>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th style="padding: 10px; text-align: center;">10402808</th>
+      <th style="padding: 10px; text-align: center;">10435499</th>
+      <th style="padding: 10px; text-align: center;">10401616</th>
+      <th style="padding: 10px; text-align: center;">10400787</th>
+    </tr>
+  </tfoot>
 </table>
+
 
 <!--
 + [Felipe Mazzeo Barboza](https://github.com/ManoTilts/ManoTilts) - 10402808
