@@ -25,7 +25,7 @@
       </td>
       <td style="padding: 10px; text-align: center; vertical-align: middle;">
         <a href="https://github.com/PedroNomura" target="_blank">
-          <img src="https://avatars.githubusercontent.com/u/110983994?v=4" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
+          <img alt="image" src="https://github.com/user-attachments/assets/7fc79409-a4ae-481e-b24e-6916fcf71f0e"src="" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
         </a>
       </td>
       <td style="padding: 10px; text-align: center; vertical-align: middle;">
