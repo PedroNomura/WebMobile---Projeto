@@ -14,7 +14,7 @@
   <tbody>
     <tr>
       <td style="padding: 10px; text-align: center; vertical-align: middle;">
-        <a href="https://github.com/ManoTilts/ManoTilts" target="_blank">
+        <a href="https://github.com/ManoTilts" target="_blank">
           <img src="https://avatars.githubusercontent.com/u/99353851?v=4" style="width: 150px; height: 150px; display: block; margin: 0 auto; border-radius: 50%;" />
         </a>
       </td>
