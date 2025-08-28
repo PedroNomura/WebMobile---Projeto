@@ -60,8 +60,10 @@ A ideação teve como ponto de partida a identificação de uma necessidade obse
 
 
 ## Protótipo
+<img width="2880" height="2450" alt="image" src="https://github.com/user-attachments/assets/873eeca1-716f-4fcb-9a2f-601a1962b1cd" />
+<img width="844" height="2450" alt="image" src="https://github.com/user-attachments/assets/16625574-be35-490b-8b3e-ae1ef7cf8c7e" />
 
-<img width="3812" height="2450" alt="image" src="https://github.com/user-attachments/assets/27dcebe8-2896-4c10-bb0e-d42deef97580" />
+<!-- <img width="3812" height="2450" alt="image" src="https://github.com/user-attachments/assets/27dcebe8-2896-4c10-bb0e-d42deef97580" /> -->
 
 <!-- caso tenha varias imagens seria bom colocar o que cada uma delas representas, o que o usuario esta fazendo e etc...-->
 <!-- do David https://github.com/david-pessoa/web-mobile/blob/main/README.md--> 
