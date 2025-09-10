@@ -1,0 +1,104 @@
+:root {
+    --altura-header: 90px;
+}
+
+html{
+    height: 100%;
+}
+
+header {
+    position: fixed;     
+    top: 0;               
+    left: 0;
+    width: 100%;         
+    height: var(--altura-header);
+    background-color: #232f3e; 
+    color: white;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.menu-navegacao {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+
+body {
+    padding-top: var(--altura-header); /*Pro header não cobrir o resto do conteudo no comeco*/
+    background-color: #dae6f1;
+}
+
+
+.destinos-nav {
+    scroll-margin-top: var(--altura-header); /* altura do header */
+}
+
+
+
+.grade-categorias {
+    display: flex;
+    gap: 20px;
+}
+
+.grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 30px; 
+    padding: 10px;
+}
+
+.cartao-produto {
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+    padding: 5px;
+    background-color: #4b9cff;
+}
+
+.cartao-produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+
+
+footer {
+    width: 100%;         
+    /* height: var(--altura-header); */
+    background-color: #232f3e; 
+    color: white;
+    font-size: 11px;
+    margin: 0;
+    margin-top: 30px;
+  
+    padding: 20px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    box-sizing: border-box;
+}
+
+.conteudo-rodape {
+    display: flex;
+    justify-content: space-between;
+}
+
+
