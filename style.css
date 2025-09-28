@@ -450,7 +450,16 @@ section h2 {
     align-items: center;
     padding: var(--espacamento-medio);
     background-color: var(--cor-primaria);
-    color: var(--cor-branca);
+    margin-bottom: 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sombra);
+}
+
+.cabecalho-carrinho h2 {
+    margin: 0;
+    font-family:'Arial', serif;
+    color: white;
+    
 }
 
 .fechar-carrinho {
@@ -563,6 +572,73 @@ footer {
     padding: var(--espacamento-medio);
     text-align: center;
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/* MEU CÓDIGO AQUI */
+/* ===== ESTILOS ADICIONAIS PARA O CARRINHO ===== */
+
+/* Estilo para cada item individual no carrinho */
+.item-carrinho-bloco {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.item-carrinho-bloco:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.imagem-item-carrinho img {
+    width: 80px;
+    height: 80px;
+    object-fit: scale-down;
+    border-radius: var(--border-radius);
+    margin-right: 15px;
+    background-color: #f9f9f9;
+}
+
+.detalhes-item-carrinho {
+    flex: 1; /* Ocupa o espaço restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.nome-item-carrinho {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+    margin-bottom: 5px;
+}
+
+.preco-item-carrinho {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.quantidade-item-carrinho {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 5px;
+}
+
+.botao-remover-item {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.botao-remover-item:hover {
+    color: #c0392b;
 }
 
 /* ===== DESIGN RESPONSIVO ===== */
