@@ -52,9 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const nomeProduto = cartaoProduto.querySelector('h3').innerText;
             const precoProdutoTexto = cartaoProduto.querySelector('.preco-atual').innerText;
             const imagemProdutoSrc = cartaoProduto.querySelector('.imagem-produto img').src;
-            const precoProduto = parseFloat(precoProdutoTexto.replace('R$', '').replace(',', '.'));
-            const idProduto = nomeProduto; // Usando o nome como ID único para simplificar
-
+            const precoProduto = parseFloat(precoProdutoTexto.replace('R$', '').replace('.','').replace(',', '.'));
+            const idProduto = nomeProduto; 
             const produto = {
                 id: idProduto,
                 nome: nomeProduto,
@@ -91,17 +90,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let total = 0;
         carrinhoItens.forEach(item => {
-            const itemElemento = document.createElement('div');
+            const itemElemento = document.createElement('article');
             itemElemento.classList.add('item-carrinho-bloco');
             itemElemento.innerHTML = `
-                <div class="imagem-item-carrinho">
+                <figure class="imagem-item-carrinho">
                     <img src="${item.imagem}" alt="${item.nome}">
-                </div>
-                <div class="detalhes-item-carrinho">
+                </figure>
+                <section class="detalhes-item-carrinho">
                     <p class="nome-item-carrinho">${item.nome}</p>
                     <p class="preco-item-carrinho">Preço: R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
                     <p class="quantidade-item-carrinho">Quantidade: ${item.quantidade}</p>
-                </div>
+                </section>
                 <button class="botao-remover-item" data-id="${item.id}">X</button>
             `;
             itensCarrinhoContainer.appendChild(itemElemento);
@@ -134,4 +133,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // --- 4. TROCA A IMAGEM A CADA 5 SEGUNDOS ---
+
+    // Lista de imagens disponíveis
+    const imagens = [
+    "img/lenovo.png",
+    "img/samsung galaxy.png",
+    "img/polo.png",
+    "img/kit.png",
+    "img/nike.png",
+    "img/maquiagem.png"
+    ];
+
+    // Seleciona a imagem principal
+    const imagemPrincipal = document.querySelector(".imagem-principal img");
+
+    // Sorteia um índice aleatório
+    const indiceAleatorio = Math.floor(Math.random() * imagens.length);
+
+    // Troca o src pela imagem sorteada
+    imagemPrincipal.src = imagens[indiceAleatorio];
+    let indice = 0;
+    
+    setInterval(() => {
+    // aplica o fade-out
+        imagemPrincipal.classList.add("fade-out");
+
+        // espera o fade terminar e troca a imagem
+        setTimeout(() => {
+            indice = (indice + 1) % imagens.length;
+            imagemPrincipal.src = imagens[indice];
+
+            // tira o fade-out para a imagem aparecer de novo
+            imagemPrincipal.classList.remove("fade-out");
+        }, 1000); // mesmo tempo do CSS (1s)
+    }, 5000); // troca a cada 5s
 });
