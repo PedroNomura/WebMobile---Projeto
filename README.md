@@ -91,24 +91,32 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 
 ```html
 <header>
-  <nav>
-    <div class="logotipo">
-      <h1>123 Realiza</h1>
-    </div>
-    <div class="container-busca">
-      <input type="text" placeholder="Buscar produtos..." class="campo-busca">
-      <button type="button" class="botao busca">Buscar</button>
-    </div>
-    <ul class="menu-navegacao">
-      <li><a href="#inicio">Início</a></li>
-      <li><a href="#produtos">Produtos</a></li>
-      <li><a href="#categorias">Categorias</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-    <!-- Botão do menu mobile -->
-    <div class="botao-menu-mobile">=</div>
-  </nav>
+    <nav>
+        <section class="logotipo">
+            <h1>123 Realiza</h1>
+        </section>
+        <section class="container-busca">
+            <input type="text" placeholder="Buscar produtos..." name="campo-busca" class="campo-busca">
+            <button type="button" class="botao-busca">Buscar</button>
+        </section>
+        <ul class="menu-navegacao">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <!-- <li><a href="#busca" class="icone-busca">🔍</a></li> -->
+            <li><a href="#carrinho" class="icone-carrinho">🛒</a></li>
+            <li><a href="#conta" class="icone-conta">👤</a></li>
+        </ul>
+        <!-- <section class="icones-navegacao">
+            <a href="#busca" class="icone-busca">🔍</a>
+            <a href="#carrinho" class="icone-carrinho">🛒</a>
+            <a href="#conta" class="icone-conta">👤</a>
+        </section> -->
+        <!-- Botão do menu mobile -->
+        <section class="botao-menu-mobile">☰</section>
+    </nav>
 </header>
 ```
 
@@ -121,13 +129,13 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 
 ```html
 <section id="inicio" class="secao-principal destinos-nav">
-  <div class="conteudo-principal">
-    <h2>Bem-vindo à 123 Realiza</h2>
-    <p>Sua loja online com os melhores produtos</p>
-  </div>
-  <div class="imagem-principal">
-    <img src="" alt="Produtos em destaque">
-  </div>
+    <section class="conteudo-principal">
+        <h2>Bem-vindo à 123 Realiza</h2>
+        <p>Sua loja online com os melhores produtos</p>
+    </section>
+    <figure class="imagem-principal">
+        <img src="img/lenovo.png" alt="Produtos em destaque">
+    </figure>
 </section>
 ```
 
@@ -138,33 +146,33 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 
 ```html
 <section id="categorias" class="secao-categorias destinos-nav">
-  <h2>Categorias</h2>
-  <div class="grade-categorias">
-    <div class="item-categoria">
-      <img src="" alt="Eletrônicos">
-      <h3>Eletrônicos</h3>
-    </div>
-    <div class="item-categoria">
-      <img src="" alt="Roupas">
-      <h3>Roupas</h3>
-    </div>
-    <div class="item-categoria">
-      <img src="" alt="Casa & Jardim">
-      <h3>Casa & Jardim</h3>
-    </div>
-    <div class="item-categoria">
-      <img src="" alt="Esportes">
-      <h3>Esportes</h3>
-    </div>
-    <div class="item-categoria">
-      <img src="" alt="Livros">
-      <h3>Livros</h3>
-    </div>
-    <div class="item-categoria">
-      <img src="" alt="Beleza">
-      <h3>Beleza</h3>
-    </div>
-  </div>
+    <h2>Categorias</h2>
+    <section class="grade-categorias">
+        <article class="item-categoria">
+            <img src="img/computer.png" alt="Eletrônicos">
+            <h3>Eletrônicos</h3>
+        </article>
+        <article class="item-categoria">
+            <img src="img/t-shirt.png" alt="Roupas">
+            <h3>Roupas</h3>
+        </article>
+        <article class="item-categoria">
+            <img src="img/house.png" alt="Casa & Jardim">
+            <h3>Casa & Jardim</h3>
+        </article>
+        <article class="item-categoria">
+            <img src="img/running.png" alt="Esportes">
+            <h3>Esportes</h3>
+        </article>
+        <article class="item-categoria">
+            <img src="img/open-book.png" alt="Livros">
+            <h3>Livros</h3>
+        </article>
+        <article class="item-categoria">
+            <img src="img/make-up.png" alt="Beleza">
+            <h3>Beleza</h3>
+        </article>
+    </section>
 </section>
 ```
 
@@ -176,90 +184,95 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 
 ```html
 <section id="produtos" class="produtos-destaque destinos-nav">
-  <h2>Produtos em Destaque</h2>
-  <div class="grade-produtos">
-    <article class="cartao-produto">
-      <div class="imagem-produto">
-        <img src="" alt="Produto 1">
-        <div class="etiqueta-produto">Oferta</div>
-      </div>
-      <div class="info-produto">
-        <h3>Smartphone Samsung Galaxy</h3>
-        <p class="descricao-produto">Smartphone com tela de 6.1 polegadas e câmera tripla</p>
-        <div class="preco-produto">
-          <span class="preco-antigo">R$ 1.299,99</span>
-          <span class="preco-atual">R$ 999,99</span>
-        </div>
-        <button class="botao-adicionar">Adicionar ao Carrinho</button>
-      </div>
-    </article>
-    <article class="cartao-produto">
-      <div class="imagem-produto">
-        <img src="" alt="Produto 2">
-      </div>
-      <div class="info-produto">
-        <h3>Camiseta Polo Masculina</h3>
-        <p class="descricao-produto">Camiseta polo de algodão 100% em diversas cores</p>
-        <div class="preco-produto">
-          <span class="preco-atual">R$ 89,99</span>
-        </div>
-        <button class="botao-adicionar">Adicionar ao Carrinho</button>
-      </div>
-    </article>
-    <article class="cartao-produto">
-      <div class="imagem-produto">
-        <img src="" alt="Produto 3">
-        <div class="etiqueta-produto">Novo</div>
-      </div>
-      <div class="info-produto">
-        <h3>Notebook Lenovo IdeaPad</h3>
-        <p class="descricao-produto">Notebook com processador Intel Core i5 e 8GB RAM</p>
-        <div class="preco-produto">
-          <span class="preco-atual">R$ 2.299,99</span>
-        </div>
-        <button class="botao-adicionar">Adicionar ao Carrinho</button>
-      </div>
-    </article>
-    <article class="cartao-produto">
-      <div class="imagem-produto">
-        <img src="" alt="Produto 4">
-      </div>
-      <div class="info-produto">
-        <h3>Kit Jardim Completo</h3>
-        <p class="descricao-produto">Kit com ferramentas básicas para jardinagem</p>
-        <div class="preco-produto">
-          <span class="preco-atual">R$ 79,99</span>
-        </div>
-        <button class="botao-adicionar">Adicionar ao Carrinho</button>
-      </div>
-    </article>
-    <article class="cartao-produto">
-      <div class="imagem-produto">
-        <img src="" alt="Produto 5">
-      </div>
-      <div class="info-produto">
-        <h3>Tênis Esportivo Nike</h3>
-        <p class="descricao-produto">Tênis para corrida com tecnologia Air Max</p>
-        <div class="preco-produto">
-          <span class="preco-atual">R$ 299,99</span>
-        </div>
-        <button class="botao-adicionar">Adicionar ao Carrinho</button>
-      </div>
-    </article>
-    <article class="cartao-produto">
-      <div class="imagem-produto">
-        <img src="" alt="Produto 6">
-      </div>
-      <div class="info-produto">
-        <h3>Kit Maquiagem Completo</h3>
-        <p class="descricao-produto">Kit com batom, base, rímel e sombras variadas</p>
-        <div class="preco-produto">
-          <span class="preco-atual">R$ 129,99</span>
-        </div>
-        <button class="botao-adicionar">Adicionar ao Carrinho</button>
-      </div>
-    </article>
-  </div>
+    <h2>Produtos em Destaque</h2>
+    <section class="grade-produtos">
+        <article class="cartao-produto">
+            <figure class="imagem-produto">
+                <img src="img/samsung galaxy.png" alt="Produto 1">
+                <figcaption class="etiqueta-produto">Oferta</figcaption>
+            </figure>
+            <section class="info-produto">
+                <h3>Smartphone Samsung Galaxy</h3>
+                <p class="descricao-produto">Smartphone com tela de 6.1 polegadas e câmera tripla</p>
+                <section class="preco-produto">
+                    <span class="preco-antigo">R$ 1.299,99</span>
+                    <span class="preco-atual">R$ 999,99</span>
+                </section>
+                <button class="botao-adicionar">Adicionar ao Carrinho</button>
+            </section>
+        </article>
+
+        <article class="cartao-produto">
+            <figure class="imagem-produto">
+                <img src="img/polo.png" alt="Produto 2">
+            </figure>
+            <section class="info-produto">
+                <h3>Camiseta Polo Masculina</h3>
+                <p class="descricao-produto">Camiseta polo de algodão 100% em diversas cores</p>
+                <section class="preco-produto">
+                    <span class="preco-atual">R$ 89,99</span>
+                </section>
+                <button class="botao-adicionar">Adicionar ao Carrinho</button>
+            </section>
+        </article>
+
+        <article class="cartao-produto">
+            <figure class="imagem-produto">
+                <img src="img/lenovo.png" alt="Produto 3">
+                <figcaption class="etiqueta-produto">Novo</figcaption>
+            </figure>
+            <section class="info-produto">
+                <h3>Notebook Lenovo IdeaPad</h3>
+                <p class="descricao-produto">Notebook com processador Intel Core i5 e 8GB RAM</p>
+                <section class="preco-produto">
+                    <span class="preco-atual">R$ 2.299,99</span>
+                </section>
+                <button class="botao-adicionar">Adicionar ao Carrinho</button>
+            </section>
+        </article>
+
+        <article class="cartao-produto">
+            <figure class="imagem-produto">
+                <img src="img/kit.png" alt="Produto 4">
+            </figure>
+            <section class="info-produto">
+                <h3>Kit Jardim Completo</h3>
+                <p class="descricao-produto">Kit com ferramentas básicas para jardinagem</p>
+                <section class="preco-produto">
+                    <span class="preco-atual">R$ 79,99</span>
+                </section>
+                <button class="botao-adicionar">Adicionar ao Carrinho</button>
+            </section>
+        </article>
+
+        <article class="cartao-produto">
+            <figure class="imagem-produto">
+                <img src="img/nike.png" alt="Produto 5">
+            </figure>
+            <section class="info-produto">
+                <h3>Tênis Esportivo Nike</h3>
+                <p class="descricao-produto">Tênis para corrida com tecnologia Air Max</p>
+                <section class="preco-produto">
+                    <span class="preco-atual">R$ 299,99</span>
+                </section>
+                <button class="botao-adicionar">Adicionar ao Carrinho</button>
+            </section>
+        </article>
+
+        <article class="cartao-produto">
+            <figure class="imagem-produto">
+                <img src="img/maquiagem.png" alt="Produto 6">
+            </figure>
+            <section class="info-produto">
+                <h3>Kit Maquiagem Completo</h3>
+                <p class="descricao-produto">Kit com batom, base, rímel e sombras variadas</p>
+                <section class="preco-produto">
+                    <span class="preco-atual">R$ 129,99</span>
+                </section>
+                <button class="botao-adicionar">Adicionar ao Carrinho</button>
+            </section>
+        </article>
+    </section>
 </section>
 ```
 
@@ -270,14 +283,14 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 
 ```html
 <section class="secao-newsletter">
-  <div class="conteudo-newsletter">
-    <h2>Fique por Dentro das Novidades</h2>
-    <p>Receba ofertas especiais e lançamentos direto no seu e-mail</p>
-    <form class="formulario-newsletter">
-      <input type="email" placeholder="Seu e-mail" required>
-      <button type="submit">Inscrever-se</button>
-    </form>
-  </div>
+    <section class="conteudo-newsletter">
+        <h2>Fique por Dentro das Novidades</h2>
+        <p>Receba ofertas especiais e lançamentos direto no seu e-mail</p>
+        <form class="formulario-newsletter">
+            <input type="email" placeholder="Seu e-mail" required>
+            <button type="submit">Inscrever-se</button>
+        </form>
+    </section>
 </section>
 ```
 
@@ -288,25 +301,25 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 
 ```html
 <section id="sobre" class="secao-sobre destinos-nav">
-  <div class="conteudo-sobre">
-    <h2>Sobre a 123 Realiza</h2>
-    <p>Somos uma loja online comprometida em oferecer os melhores produtos com qualidade e preços acessíveis. Nossa missão é facilitar suas compras e proporcionar uma experiência única de e-commerce.</p>
-    <div class="diferenciais">
-      <div class="diferencial">
-        <h3>Entrega Rápida</h3>
-        <p>Entregamos seus produtos com segurança e agilidade</p>
-      </div>
-      <div class="diferencial">
-        <h3>Qualidade Garantida</h3>
-        <p>Produtos selecionados com rigoroso controle de qualidade</p>
-      </div>
-      <div class="diferencial">
-        <h3>Atendimento 24/7</h3>
-        <p>Suporte disponível para ajudar você a qualquer momento</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <section class="conteudo-sobre">
+        <h2>Sobre a 123 Realiza</h2>
+        <p>Somos uma loja online comprometida em oferecer os melhores produtos com qualidade e preços acessíveis. Nossa
+            missão é facilitar suas compras e proporcionar uma experiência única de e-commerce.</p>
+        <section class="diferenciais">
+            <section class="diferencial">
+                <h3>Entrega Rápida</h3>
+                <p>Entregamos seus produtos com segurança e agilidade</p>
+            </section>
+            <section class="diferencial">
+                <h3>Qualidade Garantida</h3>
+                <p>Produtos selecionados com rigoroso controle de qualidade</p>
+            </section>
+            <section class="diferencial">
+                <h3>Atendimento 24/7</h3>
+                <p>Suporte disponível para ajudar você a qualquer momento</p>
+            </section>
+        </section>
+    </section>
 ```
 
 ##### Carrinho de Compras (Lateral)
@@ -317,20 +330,20 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 
 ```html
 <section id="carrinho" class="lateral-carrinho destinos-nav">
-  <div class="cabecalho-carrinho">
-    <h2>Carrinho de Compras</h2>
-    <button class="fechar-carrinho">✕</button>
-  </div>
-  <div class="itens-carrinho">
-    <!-- Itens do carrinho serão preenchidos dinamicamente -->
-    <p class="carrinho-vazio">Seu carrinho está vazio</p>
-  </div>
-  <div class="rodape-carrinho">
-    <div class="total-carrinho">
-      <span>Total: R$ 0,00</span>
-    </div>
-    <button class="botao-finalizar">Finalizar Compra</button>
-  </div>
+    <section class="cabecalho-carrinho">
+        <h2>Carrinho de Compras</h2>
+        <button class="fechar-carrinho">✕</button>
+    </section>
+    <section class="itens-carrinho">
+        <!-- Itens do carrinho serão preenchidos dinamicamente -->
+        <p class="carrinho-vazio">Seu carrinho está vazio</p>
+    </section>
+    <section class="rodape-carrinho">
+        <section class="total-carrinho">
+            <span>Total: R$ 0,00</span>
+        </section>
+        <button class="botao-finalizar">Finalizar Compra</button>
+    </section>
 </section>
 ```
 
@@ -338,42 +351,42 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 
 + Contém informações de contato, redes sociais e formas de pagamento.
 + Layout responsivo e adaptável para mobile/tablet.
-+ 
+
 ```html
 <footer id="contato" class="destinos-nav">
-  <div class="conteudo-rodape">
-    <div class="secao-rodape">
-      <h3>123 Realiza</h3>
-      <p>Sua loja online de confiança</p>
-      <div class="links-sociais">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-      </div>
-    </div>
+    <section class="conteudo-rodape">
+        <section class="secao-rodape">
+            <h3>123 Realiza</h3>
+            <p>Sua loja online de confiança</p>
+            <section class="links-sociais">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </section>
+        </section>
 
-    <div class="secao-rodape">
-      <h3>Atendimento</h3>
-      <ul>
-        <li>Telefone: (11) 99999-9999</li>
-        <li>E-mail: contato@123realiza.com.br</li>
-        <li>WhatsApp: (11) 99999-9999</li>
-      </ul>
-    </div>
+        <section class="secao-rodape">
+            <h3>Atendimento</h3>
+            <ul>
+                <li>Telefone: (11) 99999-9999</li>
+                <li>E-mail: contato@123realiza.com.br</li>
+                <li>WhatsApp: (11) 99999-9999</li>
+            </ul>
+        </section>
 
-    <div class="secao-rodape">
-      <h3>Formas de Pagamento</h3>
-      <div class="metodos-pagamento">
-        <span>Cartão de Crédito</span>
-        <span>PIX</span>
-        <span>Boleto</span>
-      </div>
-    </div>
-  </div>
+        <section class="secao-rodape">
+            <h3>Formas de Pagamento</h3>
+            <section class="metodos-pagamento">
+                <span>Cartão de Crédito</span>
+                <span>PIX</span>
+                <span>Boleto</span>
+            </section>
+        </section>
+    </section>
 
-  <div class="base-rodape">
-    <p>&copy; 2024 123 Realiza. Todos os direitos reservados.</p>
-  </div>
+    <section class="base-rodape">
+        <p>&copy; 2024 123 Realiza. Todos os direitos reservados.</p>
+    </section>
 </footer>
 ```
 
@@ -1264,3 +1277,228 @@ footer {
     color: var(--cor-secundaria);
 }
 ```
+
+### 3. Javascript
+
+#### Controle do Menu Mobile
+
++ Captura os elementos principais do menu (botão abrir, botão fechar, overlay, links).
++ A função toggleMenu() adiciona/remove a classe ativo para abrir/fechar.
++ O botão e os links do menu disparam o fechamento automático.
+
+```javascript
+const botaoMenuMobile = document.querySelector('.botao-menu-mobile');
+const overlayMenu = document.querySelector('.overlay-menu-mobile');
+const botaoFecharMenu = document.querySelector('.fechar-menu-mobile');
+const linksMenuMobile = document.querySelectorAll('.lista-menu-mobile a');
+function toggleMenu() {
+    overlayMenu.classList.toggle('ativo');
+}
+botaoMenuMobile.addEventListener('click', toggleMenu);
+botaoFecharMenu.addEventListener('click', toggleMenu);
+linksMenuMobile.forEach(link => {
+    if (!link.classList.contains('icone-carrinho')) {
+        link.addEventListener('click', () => {
+            if (overlayMenu.classList.contains('ativo')) {
+                toggleMenu();
+            }
+        });
+    }
+});
+```
+
+#### Seleção dos elementos HTML, Função e Evento de abrir/fechar carrinho
+
++ Define variáveis para acessar o carrinho lateral e seus botões.
++ toggleCarrinho() abre/fecha o carrinho.
++ Ícones de carrinho e botão fechar disparam a função.
+
+```js
+const botoesAdicionar = document.querySelectorAll('.botao-adicionar');
+const carrinhoLateral = document.querySelector('.lateral-carrinho');
+const botaoFecharCarrinho = document.querySelector('.fechar-carrinho');
+const itensCarrinhoContainer = document.querySelector('.itens-carrinho');
+const totalCarrinhoSpan = document.querySelector('.total-carrinho span');
+const iconesCarrinho = document.querySelectorAll('.icone-carrinho');
+let carrinhoItens = []; 
+
+function toggleCarrinho() {
+    carrinhoLateral.classList.toggle('aberto');
+}
+
+iconesCarrinho.forEach(icone => icone.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleCarrinho();
+    if (overlayMenu.classList.contains('ativo')) {
+        toggleMenu();
+    }
+}));
+botaoFecharCarrinho.addEventListener('click', toggleCarrinho);
+```
+
+
+#### Captura dos dados do produto
+
++ Ao clicar em “Adicionar”, o script pega nome, preço e imagem do produto.
++ Cria um objeto produto com essas informações.
++ Envia esse objeto para a função adicionarAoCarrinho().
+
+```js
+botoesAdicionar.forEach(botao => {
+    botao.addEventListener('click', (event) => {
+        const cartaoProduto = event.target.closest('.cartao-produto');
+        const nomeProduto = cartaoProduto.querySelector('h3').innerText;
+        const precoProdutoTexto = cartaoProduto.querySelector('.preco-atual').innerText;
+        const imagemProdutoSrc = cartaoProduto.querySelector('.imagem-produto img').src;
+        const precoProduto = parseFloat(precoProdutoTexto.replace('R$', '').replace('.','').replace(',', '.'));
+        const idProduto = nomeProduto; 
+        const produto = {
+            id: idProduto,
+            nome: nomeProduto,
+            preco: precoProduto,
+            imagem: imagemProdutoSrc
+        };
+        
+        adicionarAoCarrinho(produto);
+    });
+});
+
+```
+
+#### Função para adicionar ao carrinho
+
++ Verifica se o produto já existe no array carrinhoItens.
++ Se existir, aumenta a quantidade; se não, adiciona o item novo.
++ Atualiza o carrinho e abre automaticamente caso esteja fechado.
+
+```js
+function adicionarAoCarrinho(produtoAdicionado) {
+    const itemExistente = carrinhoItens.find(item => item.id === produtoAdicionado.id);
+    if (itemExistente) {
+        itemExistente.quantidade++;
+    } else {
+        carrinhoItens.push({ ...produtoAdicionado, quantidade: 1 });
+    }
+    atualizarCarrinho();
+    if (!carrinhoLateral.classList.contains('aberto')) {
+        toggleCarrinho();
+    }
+}
+```
+
+#### Atualizar a interface do carrinho
+
++ Limpa os itens atuais do HTML.
++ Se não houver produtos, mostra mensagem de carrinho vazio.
++ Para cada item: cria um article com imagem, nome, preço e botão remover.
++ Atualiza o total do carrinho em tempo real.
+
+```js
+function atualizarCarrinho() {
+    itensCarrinhoContainer.innerHTML = '';
+    if (carrinhoItens.length === 0) {
+        itensCarrinhoContainer.innerHTML = '<p class="carrinho-vazio">Seu carrinho está vazio</p>';
+        totalCarrinhoSpan.innerText = 'Total: R$ 0,00';
+        return;
+    }
+    let total = 0;
+    carrinhoItens.forEach(item => {
+        const itemElemento = document.createElement('article');
+        itemElemento.classList.add('item-carrinho-bloco');
+        itemElemento.innerHTML = `
+            <figure class="imagem-item-carrinho">
+                <img src="${item.imagem}" alt="${item.nome}">
+            </figure>
+            <section class="detalhes-item-carrinho">
+                <p class="nome-item-carrinho">${item.nome}</p>
+                <p class="preco-item-carrinho">Preço: R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+                <p class="quantidade-item-carrinho">Quantidade: ${item.quantidade}</p>
+            </section>
+            <button class="botao-remover-item" data-id="${item.id}">X</button>
+        `;
+        itensCarrinhoContainer.appendChild(itemElemento);
+        
+        total += item.preco * item.quantidade;
+    });
+    totalCarrinhoSpan.innerText = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+}
+```
+
+
+#### Remover itens do carrinho
+
++ Ouvinte de clique no container de itens.
++ Se o alvo do clique for um botão X, remove o item pelo id.
++ Atualiza o carrinho após a remoção.
+
+
+```js
+itensCarrinhoContainer.addEventListener('click', function(event) {
+    if (event.target.classList.contains('botao-remover-item')) {
+        const idParaRemover = event.target.getAttribute('data-id');
+        carrinhoItens = carrinhoItens.filter(item => item.id !== idParaRemover);
+        atualizarCarrinho();
+    }
+});
+```
+
+#### Confirmação da Newsletter
+
++ Captura o formulário da newsletter.
++ Intercepta o envio para não recarregar a página.
++ Mostra um alert() confirmando o cadastro do e-mail.
+
+```js
+const formNewsletter = document.querySelector('.formulario-newsletter');
+formNewsletter.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+    const inputEmail = formNewsletter.querySelector('input[type="email"]');
+    const email = inputEmail.value;
+    if (email) {
+        alert(`Obrigado por se inscrever!\nSeu e-mail ${email} foi cadastrado com sucesso.`);
+        inputEmail.value = '';
+    }
+});
+```
+
+
+#### Troca Automática da Imagem Principal
+
++ Define um array de imagens.
++ Sorteia uma para iniciar a página.
++ Usa setInterval() para trocar de imagem a cada 5 segundos.
++ Adiciona classe fade-out para criar transição suave.
+
+```js
+ // Lista de imagens disponíveis
+const imagens = [
+"img/lenovo.png",
+"img/samsung galaxy.png",
+"img/polo.png",
+"img/kit.png",
+"img/nike.png",
+"img/maquiagem.png"
+];
+const imagemPrincipal = document.querySelector(".imagem-principal img");
+const indiceAleatorio = Math.floor(Math.random() * imagens.length);
+imagemPrincipal.src = imagens[indiceAleatorio];
+let indice = 0;
+
+setInterval(() => {
+    imagemPrincipal.classList.add("fade-out");
+    setTimeout(() => {
+        indice = (indice + 1) % imagens.length;
+        imagemPrincipal.src = imagens[indice];
+        imagemPrincipal.classList.remove("fade-out");
+    }, 1000); // mesmo tempo do CSS (1s)
+}, 5000); // troca a cada 5s
+
+```
+
+---
+
+### Aprendizados Adquiridos
+
+O desenvolvimento deste projeto permitiu compreender de forma prática como unir diferentes tecnologias da web para criar uma solução completa. Foram aplicados conceitos de HTML para estruturar a página, CSS para definir o layout responsivo e JavaScript para adicionar interatividade, como o carrinho de compras, o menu para dispositivos móveis e a troca automática de imagens. 
+
+Além do aspecto técnico, o trabalho reforçou a importância de pensar em soluções simples, acessíveis e funcionais, que possam atender às necessidades de diferentes usuários. O aprendizado obtido vai além da programação, mostrando como a tecnologia pode ser utilizada como ferramenta de apoio para ampliar oportunidades e facilitar o acesso ao ambiente digital.
