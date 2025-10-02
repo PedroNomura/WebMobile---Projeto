@@ -145,26 +145,17 @@ document.addEventListener('DOMContentLoaded', function() {
     "img/maquiagem.png"
     ];
 
-    // Seleciona a imagem principal
     const imagemPrincipal = document.querySelector(".imagem-principal img");
-
-    // Sorteia um índice aleatório
     const indiceAleatorio = Math.floor(Math.random() * imagens.length);
-
-    // Troca o src pela imagem sorteada
     imagemPrincipal.src = imagens[indiceAleatorio];
     let indice = 0;
     
     setInterval(() => {
-    // aplica o fade-out
         imagemPrincipal.classList.add("fade-out");
-
-        // espera o fade terminar e troca a imagem
         setTimeout(() => {
             indice = (indice + 1) % imagens.length;
             imagemPrincipal.src = imagens[indice];
 
-            // tira o fade-out para a imagem aparecer de novo
             imagemPrincipal.classList.remove("fade-out");
         }, 1000); // mesmo tempo do CSS (1s)
     }, 5000); // troca a cada 5s
