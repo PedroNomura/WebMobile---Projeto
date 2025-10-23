@@ -87,6 +87,7 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 + O uso do Virtual DOM torna as atualizações de tela mais eficientes, melhorando a experiência do usuário.
 + Além disso, o React facilita a escala e evolução do sistema, permitindo adicionar novas funções sem comprometer o restante da aplicação.
 
+---
 ## Tutorial
 ### Como Rodar o Projeto
 
@@ -808,3 +809,5 @@ Um *hook* customizado que os componentes "consumidores" (como `Header.js`, `Cart
 
 * **Valores Memoizados (Memo):**
     * `cartTotal`: Um valor calculado usando `useMemo`. Ele "escuta" por mudanças no array `cartItems` e recalcula automaticamente o preço total ( `preço * quantidade` de todos os itens). Isso evita recálculos desnecessários a cada renderização.
+ 
+---
