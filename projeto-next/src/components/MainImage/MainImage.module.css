@@ -1,0 +1,85 @@
+/* Estilos migrados do globals.css para o módulo 'Hero' */
+
+.secaoPrincipal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espacamento-grande) var(--espacamento-medio);
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 400px;
+}
+
+.conteudoPrincipal {
+  flex: 1;
+  max-width: 500px;
+}
+
+.conteudoPrincipal h2 {
+  font-size: 2.5rem;
+  margin-bottom: var(--espacamento-medio);
+  color: var(--cor-primaria);
+}
+
+.conteudoPrincipal p {
+  font-size: 1.2rem;
+  margin-bottom: var(--espacamento-grande);
+  color: #666;
+}
+
+.imagemPrincipal {
+  flex: 1;
+  text-align: center;
+}
+
+/* O estilo da tag img foi movido para uma classe */
+.imagemHero {
+  max-width: 100%;
+  height: 300px;
+  width: 100%;
+  object-fit: scale-down;
+  border-radius: var(--border-radius);
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+/* ===== DESIGN RESPONSIVO (Migrado) ===== */
+
+@media (max-width: 768px) {
+  .secaoPrincipal {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--espacamento-medio);
+    min-height: 300px;
+  }
+
+  .conteudoPrincipal {
+    max-width: 100%;
+    margin-bottom: var(--espacamento-grande);
+  }
+
+  .conteudoPrincipal h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .conteudoPrincipal h2 {
+    font-size: 1.8rem;
+    margin-bottom: var(--espacamento-medio);
+  }
+
+  .conteudoPrincipal p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .conteudoPrincipal h2 {
+    font-size: 1.5rem;
+  }
+}

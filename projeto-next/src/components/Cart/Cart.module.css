@@ -1,0 +1,163 @@
+/* Estilos migrados do globals.css para o módulo 'Cart' */
+
+.lateralCarrinho {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: var(--cor-branca);
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Esta classe '.aberto' será aplicada dinamicamente via JS */
+.aberto {
+    right: 0;
+}
+
+.cabecalhoCarrinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--espacamento-medio);
+    background-color: var(--cor-primaria);
+    margin-bottom: 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sombra);
+}
+
+.cabecalhoCarrinho h2 {
+    margin: 0;
+    font-family:'Arial', serif;
+    color: white;
+}
+
+.fecharCarrinho {
+    background: none;
+    border: none;
+    color: var(--cor-branca);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.itensCarrinho {
+    flex: 1;
+    padding: var(--espacamento-medio);
+    overflow-y: auto;
+}
+
+/* Adicionando estilo para a classe 'carrinho-vazio' que estava no JS */
+.carrinhoVazio {
+    text-align: center;
+    padding: var(--espacamento-grande);
+    color: #666;
+    font-style: italic;
+}
+
+.rodapeCarrinho {
+    padding: var(--espacamento-medio);
+    border-top: 1px solid #eee;
+}
+
+.totalCarrinho {
+    text-align: center;
+    margin-bottom: var(--espacamento-medio);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.botaoFinalizar {
+    width: 100%;
+    padding: 12px;
+    background-color: #27ae60;
+    color: var(--cor-branca);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.botaoFinalizar:hover {
+    background-color: #219a52;
+}
+
+/* ===== ESTILOS ADICIONAIS PARA OS ITENS ===== */
+
+.itemCarrinhoBloco {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.itemCarrinhoBloco:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.imagemItemCarrinho img {
+    width: 80px;
+    height: 80px;
+    object-fit: scale-down;
+    border-radius: var(--border-radius);
+    margin-right: 15px;
+    background-color: #f9f9f9;
+}
+
+.detalhesItemCarrinho {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+.nomeItemCarrinho {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+    margin-bottom: 5px;
+}
+
+.precoItemCarrinho {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.quantidadeItemCarrinho {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 5px;
+}
+
+.botaoRemoverItem {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.botaoRemoverItem:hover {
+    color: #c0392b;
+}
+
+/* ===== AJUSTES RESPONSIVOS ===== */
+
+@media (max-width: 768px) {
+    .lateralCarrinho {
+        width: 100%;
+        right: -100%;
+    }
+
+    /* .aberto (definido acima) cuidará de mudar o 'right' para 0 */
+}

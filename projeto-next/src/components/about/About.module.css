@@ -1,0 +1,50 @@
+.secaoSobre {
+  padding: var(--espacamento-grande) var(--espacamento-medio);
+}
+
+.conteudoSobre {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.conteudoSobre h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: var(--espacamento-grande);
+  color: var(--cor-primaria);
+}
+
+.conteudoSobre p {
+  font-size: 1.1rem;
+  margin-bottom: var(--espacamento-grande);
+  color: #666;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.diferenciais {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--espacamento-grande);
+  margin-top: var(--espacamento-grande);
+}
+
+.diferencial {
+  background: var(--cor-branca);
+  padding: var(--espacamento-grande);
+  border-radius: var(--border-radius);
+  box-shadow: var(--sombra);
+}
+
+.diferencial h3 {
+  color: var(--cor-primaria);
+  margin-bottom: var(--espacamento-medio);
+  font-size: 1.3rem;
+}
+
+.diferencial p {
+  color: #666;
+  margin: 0;
+}

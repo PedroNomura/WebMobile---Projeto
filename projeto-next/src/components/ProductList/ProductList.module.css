@@ -1,0 +1,62 @@
+/* Estilos migrados do globals.css para o módulo 'ProductList' */
+
+/* Estilo da seção principal (veio do 'section' global) */
+.secaoProdutos {
+  padding: var(--espacamento-grande) var(--espacamento-medio);
+}
+
+/* Estilo do título (veio do 'section h2' global) */
+.secaoProdutos h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: var(--espacamento-grande);
+  color: var(--cor-primaria);
+}
+
+/* Estilo da grade (veio do '.grade-produtos' global) */
+.gradeProdutos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espacamento-grande);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== DESIGN RESPONSIVO (Migrado) ===== */
+
+@media (min-width: 1200px) {
+  .gradeProdutos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1199px) {
+  .gradeProdutos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gradeProdutos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacamento-medio);
+  }
+}
+
+@media (max-width: 480px) {
+  .secaoProdutos h2 {
+    font-size: 1.5rem;
+  }
+
+  .gradeProdutos {
+    grid-template-columns: 1fr;
+    gap: var(--espacamento-medio);
+    padding: var(--espacamento-pequeno);
+  }
+}
+
+@media (max-width: 320px) {
+  .secaoProdutos {
+    padding: var(--espacamento-medio) var(--espacamento-pequeno);
+  }
+}

@@ -1,0 +1,85 @@
+/* Estilos migrados do globals.css para o módulo 'Newsletter' */
+
+.secaoNewsletter {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+  text-align: center;
+  padding: var(--espacamento-grande) var(--espacamento-medio);
+}
+
+.conteudoNewsletter {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.conteudoNewsletter h2 {
+  color: var(--cor-branca);
+  margin-bottom: var(--espacamento-medio);
+  /* Estilos de 'section h2' que se aplicavam (opcional, mas bom para consistência) */
+  text-align: center;
+  font-size: 2rem;
+}
+
+.conteudoNewsletter p {
+  margin-bottom: var(--espacamento-grande);
+  opacity: 0.9;
+}
+
+.formularioNewsletter {
+  display: flex;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 0;
+}
+
+.formularioNewsletter input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  font-size: 14px;
+}
+
+.formularioNewsletter button {
+  padding: 12px 24px;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-branca);
+  border: none;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.formularioNewsletter button:hover {
+  background-color: #3a8ce8;
+}
+
+/* Mensagem de sucesso para substituir o alert() */
+.mensagemSucesso {
+  margin-top: var(--espacamento-medio);
+  color: #27ae60; /* Verde sucesso */
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+
+/* ===== DESIGN RESPONSIVO (Migrado) ===== */
+
+@media (max-width: 768px) {
+  .formularioNewsletter {
+    flex-direction: column;
+    gap: var(--espacamento-pequeno);
+  }
+
+  .formularioNewsletter input,
+  .formularioNewsletter button {
+    border-radius: var(--border-radius);
+  }
+}
+
+@media (max-width: 480px) {
+  .conteudoNewsletter h2 {
+    font-size: 1.5rem;
+  }
+}

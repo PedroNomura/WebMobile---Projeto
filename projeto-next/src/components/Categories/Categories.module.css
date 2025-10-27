@@ -1,0 +1,82 @@
+/* Estilos migrados do globals.css para o módulo 'Categories' */
+
+/* Estilo genérico de 'section' */
+.secaoCategorias {
+  padding: var(--espacamento-grande) var(--espacamento-medio);
+}
+
+/* Estilo genérico de 'section h2' */
+.secaoCategorias h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: var(--espacamento-grande);
+  color: var(--cor-primaria);
+}
+
+.gradeCategorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--espacamento-medio);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.itemCategoria {
+  background: var(--cor-branca);
+  padding: var(--espacamento-medio);
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: var(--sombra);
+  transition: transform 0.3s ease;
+}
+
+.itemCategoria:hover {
+  transform: translateY(-5px);
+}
+
+.itemCategoria img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-bottom: var(--espacamento-pequeno);
+  background-color: #ffffff;
+}
+
+.itemCategoria h3 {
+  font-size: 1.1rem;
+  color: var(--cor-primaria);
+}
+
+/* ===== DESIGN RESPONSIVO (Migrado) ===== */
+
+@media (min-width: 1200px) {
+  .gradeCategorias {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1199px) {
+  .gradeCategorias {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gradeCategorias {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .gradeCategorias {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacamento-medio);
+  }
+}
+
+@media (max-width: 320px) {
+  .gradeCategorias {
+    grid-template-columns: 1fr;
+  }
+}

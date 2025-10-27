@@ -1,0 +1,132 @@
+/* Estilos migrados do globals.css para o módulo 'Header' */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--altura-header);
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    z-index: 1000;
+    box-shadow: var(--sombra);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--espacamento-medio);
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logotipo h1 {
+    font-size: 1.5rem;
+    color: var(--cor-branca);
+}
+
+.containerBusca {
+    display: flex;
+    flex: 1;
+    max-width: 500px;
+    margin: 0 var(--espacamento-medio);
+}
+
+.campoBusca {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    font-size: 14px;
+}
+
+.botaoBusca {
+    padding: 8px 16px;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.botaoBusca:hover {
+    background-color: #3a8ce8;
+}
+
+.menuNavegacao {
+    display: flex;
+    gap: var(--espacamento-medio);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuNavegacao a {
+    text-decoration: none;
+    color: var(--cor-branca);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+
+.menuNavegacao a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* .iconeCarrinho {
+  
+}
+
+.iconeConta {
+  
+} */
+
+.botaoMenuMobile {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--cor-branca);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* ===== DESIGN RESPONSIVO (Migrado) ===== */
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 0 var(--espacamento-medio);
+    }
+    
+    .logotipo h1 {
+        font-size: 1.3rem;
+    }
+    
+    .containerBusca {
+        display: none;
+    }
+    
+    .botaoMenuMobile {
+        display: block;
+    }
+    
+    .menuNavegacao {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        padding: 0 var(--espacamento-medio);
+    }
+    
+    .logotipo h1 {
+        font-size: 1.1rem;
+    }
+}

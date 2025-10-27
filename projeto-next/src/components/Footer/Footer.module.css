@@ -1,0 +1,100 @@
+/* Estilos migrados do globals.css para o módulo 'Footer' */
+
+.footer {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+  margin-top: var(--espacamento-grande);
+}
+
+.conteudoRodape {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--espacamento-grande);
+  padding: var(--espacamento-grande) var(--espacamento-medio);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.secaoRodape h3 {
+  margin-bottom: var(--espacamento-medio);
+  font-size: 1.2rem;
+}
+
+.secaoRodape ul {
+  list-style: none;
+  /* Adicionando padding 0 que estava implícito no reset */
+  padding: 0;
+}
+
+.secaoRodape ul li {
+  margin-bottom: 8px;
+}
+
+.linksSociais {
+  display: flex;
+  gap: var(--espacamento-medio);
+  margin-top: var(--espacamento-medio);
+}
+
+.linksSociais a {
+  color: var(--cor-branca);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.linksSociais a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.metodosPagamento {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacamento-pequeno);
+  margin-top: var(--espacamento-medio);
+}
+
+.metodosPagamento span {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+}
+
+.baseRodape {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: var(--espacamento-medio);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ===== DESIGN RESPONSIVO (Migrado) ===== */
+
+@media (max-width: 768px) {
+  .conteudoRodape {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacamento-medio);
+  }
+
+  .linksSociais {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .conteudoRodape {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--espacamento-grande);
+  }
+
+  .linksSociais {
+    justify-content: center;
+  }
+
+  .metodosPagamento {
+    justify-content: center;
+  }
+}

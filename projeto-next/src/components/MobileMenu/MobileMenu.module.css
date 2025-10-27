@@ -1,0 +1,87 @@
+/* Estilos migrados do globals.css para o módulo 'MobileMenu' */
+
+.overlayMenuMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlayMenuMobile.ativo {
+  opacity: 1;
+  visibility: visible;
+}
+
+.conteudoMenuMobile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: var(--cor-branca);
+  padding: var(--espacamento-grande);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+}
+
+.overlayMenuMobile.ativo .conteudoMenuMobile {
+  transform: translateX(0);
+}
+
+.fecharMenuMobile {
+  position: absolute;
+  top: var(--espacamento-medio);
+  right: var(--espacamento-medio);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--cor-primaria);
+  padding: 5px;
+}
+
+.listaMenuMobile {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 60px;
+}
+
+.listaMenuMobile li {
+  margin-bottom: var(--espacamento-pequeno);
+}
+
+.listaMenuMobile a {
+  display: block;
+  padding: var(--espacamento-medio);
+  text-decoration: none;
+  color: var(--cor-primaria);
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.listaMenuMobile a:hover {
+  background-color: var(--cor-background);
+  color: var(--cor-secundaria);
+}
+
+
+/* .iconeCarrinho {
+} */
+
+/* ===== DESIGN RESPONSIVO (Migrado) ===== */
+
+@media (max-width: 320px) {
+  .conteudoMenuMobile {
+    width: 100%;
+  }
+}
