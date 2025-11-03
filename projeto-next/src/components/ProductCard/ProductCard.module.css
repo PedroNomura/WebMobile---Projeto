@@ -1,4 +1,4 @@
-/* Estilos migrados do globals.css para o módulo 'ProductCard' */
+/* ProductCard.module.css */
 
 .cartaoProduto {
   background: var(--cor-branca);
@@ -15,14 +15,16 @@
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-.imagemProduto {
+.imagemProdutoContainer { /* Renomeado para clareza */
   position: relative;
   height: 200px;
   overflow: hidden;
 }
 
-/* Estilo para a tag img dentro do container (suportado por módulos) */
-.imagemProduto img {
+/* * CORREÇÃO 1:
+ * Crie uma classe específica para a tag <Image />
+*/
+.imagemTag {
   width: 100%;
   height: 100%;
   object-fit: scale-down;
@@ -48,12 +50,20 @@
   flex-direction: column;
 }
 
-/* Estilo para a tag h3 dentro do container (suportado por módulos) */
-.infoProduto h3 {
+/* * CORREÇÃO 2:
+ * Crie uma classe específica para o <h3>
+*/
+.produtoTitulo {
   font-size: 1.2rem;
   margin-bottom: var(--espacamento-pequeno);
   color: var(--cor-primaria);
+  /* Link dentro do título */
+  text-decoration: none;
 }
+.produtoTitulo:hover {
+  text-decoration: underline;
+}
+
 
 .descricaoProduto {
   color: #666;
@@ -93,18 +103,19 @@
   background-color: #3a8ce8;
 }
 
-/* ===== DESIGN RESPONSIVO (Migrado) ===== */
+/* ===== DESIGN RESPONSIVO (Corrigido) ===== */
 
 @media (max-width: 480px) {
   .cartaoProduto {
     max-width: 100%;
   }
 
-  .imagemProduto {
+  .imagemProdutoContainer {
     height: 180px;
   }
 
-.infoProduto h3 {
+  /* CORREÇÃO 3: Use a classe específica */
+  .produtoTitulo {
     font-size: 1.1rem;
   }
 
