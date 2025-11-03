@@ -53,11 +53,11 @@ export default function ProdutoPage({ params }) {
 
                 <section className={`preco-produto ${styles.blocoPreco}`}>
                     {produto.precoAntigo && (
-                        <span className="preco-antigo">
+                        <span className={styles.precoAntigo}>
                             {produto.precoAntigo}
                         </span>
                     )}
-                    <span className="preco-atual">
+                    <span className={styles.precoAtual}>
                         R$ {formatPrice(produto.preco)}
                     </span>
                 </section>
