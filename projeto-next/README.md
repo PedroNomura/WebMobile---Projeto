@@ -125,6 +125,8 @@ O caráter extensionista do projeto está na busca por resolver um problema iden
 ```
 src/
 ├── app/
+│   ├── produtos/[id]/
+│   │   └── page.js
 │   ├── layout.js
 │   └── page.js
 ├── components/
@@ -139,6 +141,8 @@ src/
 │   ├── ProductList.js
 │   └── about/
 │       └── About.js
+├── lib/
+│   └── data.js
 └── context/
     └── AppContext.js
 ```
@@ -149,15 +153,14 @@ src/
 ### `app/layout.js`
 
 ```javascript
-
 import { Inter } from "next/font/google";
 import "./globals.css"; 
 import { AppProvider } from "@/context/AppContext"; 
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Cart from "@/components/Cart";
-import MobileMenu from "@/components/MobileMenu";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import Cart from "@/components/Cart/Cart";
+import MobileMenu from "@/components/MobileMenu/MobileMenu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -193,10 +196,10 @@ Este é o **Layout Raiz** (Root Layout) da aplicação. Ele define a estrutura H
 ```javascript
 // ARQUIVO: app/page.js
 
-import MainImage from "@/components/MainImage";
-import Categories from "@/components/Categories";
-import ProductList from "@/components/ProductList";
-import Newsletter from "@/components/Newsletter";
+import MainImage from "@/components/MainImage/MainImage";
+import Categories from "@/components/Categories/Categories";
+import ProductList from "@/components/ProductList/ProductList";
+import Newsletter from "@/components/Newsletter/Newsletter";
 import About from "@/components/about/About";
 
 export default function Home() {
@@ -228,39 +231,38 @@ Este arquivo representa a **página inicial** (homepage) do site, acessível pel
 "use client";
 
 import { useAppContext } from "@/context/AppContext";
+import styles from './Header.module.css'; // Importa o módulo CSS
 
 export default function Header() {
-    // Pega as funções do nosso Context
     const { toggleMenu, toggleCart } = useAppContext();
     
     return (
-        <header>
-            <nav>
-                <section className="logotipo">
+        <header className={styles.header}>
+            <nav className={styles.nav}>
+                <section className={styles.logotipo}>
                     <h1>123 Realiza</h1>
                 </section>
-                <section className="container-busca">
-                    <input type="text" placeholder="Buscar produtos..." name="campo-busca" className="campo-busca" />
-                    <button type="button" className="botao-busca">Buscar</button>
+                <section className={styles.containerBusca}>
+                    <input type="text" placeholder="Buscar produtos..." name="campo-busca" className={styles.campoBusca} />
+                    <button type="button" className={styles.botaoBusca}>Buscar</button>
                 </section>
-                <ul className="menu-navegacao">
+                <ul className={styles.menuNavegacao}>
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#produtos">Produtos</a></li>
                     <li><a href="#categorias">Categorias</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#contato">Contato</a></li>
-                    {/* onClick foi substituído por toggleCart */}
-                    <li><a href="#" className="icone-carrinho" onClick={(e) => { e.preventDefault(); toggleCart(); }}>🛒</a></li>
-                    <li><a href="#conta" className="icone-conta">👤</a></li>
+                    <li><a href="#" className={styles.iconeCarrinho} onClick={(e) => { e.preventDefault(); toggleCart(); }}>🛒</a></li>
+                    <li><a href="#conta" className={styles.iconeConta}>👤</a></li>
                 </ul>
-                {/* onClick foi substituído por toggleMenu */}
-                <section className="botao-menu-mobile" onClick={toggleMenu}>
+                <section className={styles.botaoMenuMobile} onClick={toggleMenu}>
                     ☰
                 </section>
             </nav>
         </header>
     );
 }
+
 ```
 
 Um **Componente de Cliente** (`"use client"`) que renderiza o cabeçalho principal do site.
@@ -274,21 +276,26 @@ Um **Componente de Cliente** (`"use client"`) que renderiza o cabeçalho princip
 ### `components/Footer.js`
 
 ```javascript
+import styles from './Footer.module.css'; // Importa o módulo
+
 export default function Footer() {
     return (
-        <footer id="contato" className="destinos-nav">
-            <section className="conteudo-rodape">
-                <section className="secao-rodape">
+        <footer 
+            id="contato" 
+            className={`${styles.footer} destinos-nav`}
+        >
+            <section className={styles.conteudoRodape}>
+                <section className={styles.secaoRodape}>
                     <h3>123 Realiza</h3>
                     <p>Sua loja online de confiança</p>
-                    <section className="links-sociais">
+                    <section className={styles.linksSociais}>
                         <a href="#">Facebook</a>
                         <a href="#">Instagram</a>
                         <a href="#">Twitter</a>
                     </section>
                 </section>
                 
-                <section className="secao-rodape">
+                <section className={styles.secaoRodape}>
                     <h3>Atendimento</h3>
                     <ul>
                         <li>Telefone: (11) 99999-9999</li>
@@ -297,9 +304,9 @@ export default function Footer() {
                     </ul>
                 </section>
                 
-                <section className="secao-rodape">
+                <section className={styles.secaoRodape}>
                     <h3>Formas de Pagamento</h3>
-                    <section className="metodos-pagamento">
+                    <section className={styles.metodosPagamento}>
                         <span>Cartão de Crédito</span>
                         <span>PIX</span>
                         <span>Boleto</span>
@@ -307,7 +314,7 @@ export default function Footer() {
                 </section>
             </section>
             
-            <section className="base-rodape">
+            <section className={styles.baseRodape}>
                 <p>&copy; 2024 123 Realiza. Todos os direitos reservados.</p>
             </section>
         </footer>
@@ -329,6 +336,7 @@ Um **Componente de Servidor** (padrão) que renderiza o rodapé do site.
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import styles from './MainImage.module.css'; // Importa o módulo
 
 const imagens = [
     "/img/lenovo.png",
@@ -339,11 +347,11 @@ const imagens = [
     "/img/maquiagem.png"
 ];
 
-export default function MainImage() {
+export default function Hero() {
     const [indice, setIndice] = useState(0); 
     const [isFading, setIsFading] = useState(false);
+
     useEffect(() => {
-        // Lógica do carrossel
         const interval = setInterval(() => {
             setIsFading(true); 
 
@@ -358,25 +366,31 @@ export default function MainImage() {
     }, []); 
 
     return (
-        <section id="inicio" className="secao-principal destinos-nav">
-            <section className="conteudo-principal">
+        <section 
+            id="inicio" 
+            // 'destinos-nav' (global) é mantido, 'secaoPrincipal' (módulo) é adicionado
+            className={`${styles.secaoPrincipal} destinos-nav`}
+        >
+            <section className={styles.conteudoPrincipal}>
                 <h2>Bem-vindo à 123 Realiza</h2>
                 <p>Sua loja online com os melhores produtos</p>
             </section>
-            <figure className="imagem-principal">
+            <figure className={styles.imagemPrincipal}>
                 <Image
                     src={imagens[indice]}
                     alt="Produtos em destaque"
                     width={500}
                     height={300}
                     style={{ objectFit: 'scale-down', width: '100%', height: '300px' }}
-                    className={isFading ? 'fade-out' : ''}
+                    // Classe do módulo para o fade-out
+                    className={`${styles.imagemHero} ${isFading ? styles.fadeOut : ''}`}
                     priority
                 />
             </figure>
         </section>
     );
 }
+
 ```
 
 Um **Componente de Cliente** (`"use client"`) que funciona como o banner principal (seção "Hero") da página inicial.
@@ -390,37 +404,41 @@ Um **Componente de Cliente** (`"use client"`) que funciona como o banner princip
 
 ### `components/Categories.js`
 
-
-
 ```javascript
 import Image from "next/image";
+import styles from './Categories.module.css'; // Importa o módulo
 
 export default function Categories() {
     return (
-        <section id="categorias" className="secao-categorias destinos-nav">
+        <section 
+            id="categorias" 
+            // 'destinos-nav' (global) é mantido, 'secaoCategorias' (módulo) é adicionado
+            className={`${styles.secaoCategorias} destinos-nav`}
+        >
             <h2>Categorias</h2>
-            <section className="grade-categorias">
-                <article className="item-categoria">
+            <section className={styles.gradeCategorias}>
+                <article className={styles.itemCategoria}>
                     <Image src="/img/computer.png" alt="Eletrônicos" width={50} height={50} />
                     <h3>Eletrônicos</h3>
                 </article>
-                <article className="item-categoria">
+                <article className={styles.itemCategoria}>
+
                     <Image src="/img/t-shirt.png" alt="Roupas" width={50} height={50} />
                     <h3>Roupas</h3>
                 </article>
-                <article className="item-categoria">
+                <article className={styles.itemCategoria}>
                     <Image src="/img/house.png" alt="Casa & Jardim" width={50} height={50} />
                     <h3>Casa & Jardim</h3>
                 </article>
-                <article className="item-categoria">
+                <article className={styles.itemCategoria}>
                     <Image src="/img/running.png" alt="Esportes" width={50} height={50} />
                     <h3>Esportes</h3>
                 </article>
-                <article className="item-categoria">
+                <article className={styles.itemCategoria}>
                     <Image src="/img/open-book.png" alt="Livros" width={50} height={50} />
                     <h3>Livros</h3>
                 </article>
-                <article className="item-categoria">
+                <article className={styles.itemCategoria}>
                     <Image src="/img/make-up.png" alt="Beleza" width={50} height={50} />
                     <h3>Beleza</h3>
                 </article>
@@ -428,6 +446,7 @@ export default function Categories() {
         </section>
     );
 }
+
 ```
 
 Um **Componente de Servidor** (padrão) que renderiza a seção de categorias de produtos.
@@ -440,44 +459,19 @@ Um **Componente de Servidor** (padrão) que renderiza a seção de categorias de
 ### `components/ProductList.js`
 
 ```javascript
-import ProductCard from "./ProductCard";
-
-// Seus produtos, agora como um array de dados
-// Caminhos das imagens atualizados para /public
-const produtos = [
-    { id: "samsung_galaxy", nome: "Smartphone Samsung Galaxy", preco: 999.99, imagem: "/img/samsung galaxy.png" },
-    { id: "camiseta_polo", nome: "Camiseta Polo Masculina", preco: 89.99, imagem: "/img/polo.png" },
-    { id: "notebook_lenovo", nome: "Notebook Lenovo IdeaPad", preco: 2299.99, imagem: "/img/lenovo.png" },
-    { id: "kit_jardim", nome: "Kit Jardim Completo", preco: 79.99, imagem: "/img/kit.png" },
-    { id: "tenis_nike", nome: "Tênis Esportivo Nike", preco: 299.99, imagem: "/img/nike.png" },
-    { id: "kit_maquiagem", nome: "Kit Maquiagem Completo", preco: 129.99, imagem: "/img/maquiagem.png" },
-];
-
-// Detalhes extras do seu HTML
-const productDetails = {
-    samsung_galaxy: { desc: "Smartphone com tela de 6.1 polegadas e câmera tripla", oldPrice: "R$ 1.299,99", tag: "Oferta" },
-    camiseta_polo: { desc: "Camiseta polo de algodão 100% em diversas cores" },
-    notebook_lenovo: { desc: "Notebook com processador Intel Core i5 e 8GB RAM", tag: "Novo" },
-    kit_jardim: { desc: "Kit com ferramentas básicas para jardinagem" },
-    tenis_nike: { desc: "Tênis para corrida com tecnologia Air Max" },
-    kit_maquiagem: { desc: "Kit com batom, base, rímel e sombras variadas" },
-};
-
+import ProductCard from "../ProductCard/ProductCard";
+import { produtos } from "@/lib/data";
+import styles from "./ProductList.module.css"
 
 export default function ProductList() {
     return (
-        <section id="produtos" className="produtos-destaque destinos-nav">
+        <section id="produtos" className={`${styles.secaoProdutos} destinos-nav`}>
             <h2>Produtos em Destaque</h2>
-            <section className="grade-produtos">
-                {/* Mapeamos o array de produtos */}
+            <section className={styles.gradeProdutos}>
                 {produtos.map(produto => (
                     <ProductCard
                         key={produto.id}
-                        produto={produto}
-                        // Passamos os detalhes extras como props
-                        descricao={productDetails[produto.id].desc}
-                        precoAntigo={productDetails[produto.id].oldPrice}
-                        etiqueta={productDetails[produto.id].tag}
+                        produto={produto} 
                     />
                 ))}
             </section>
@@ -486,23 +480,30 @@ export default function ProductList() {
 }
 ```
 
-Um **Componente de Servidor** (padrão) que exibe a grade de produtos em destaque.
+Um **Componente de Servidor** (padrão) que renderiza a listagem dos produtos em destaque na loja.
 
-* **Propósito**: Listar os principais produtos na página inicial.
+* **Propósito**: Exibir dinamicamente os produtos disponíveis em destaque na página inicial.
 * **Funcionalidade**:
-    * Define um array local `produtos` com os dados básicos e um objeto `productDetails` com informações complementares (descrição, preço antigo, etc.).
-    * Mapeia (`.map()`) o array `produtos`.
-    * Para cada item, renderiza um componente `ProductCard`, passando os dados combinados de `produtos` e `productDetails` como `props`.
+  * Utiliza o componente filho ProductCard para renderizar cada produto individualmente.
+  * Obtém os dados do array produtos, importado de @/lib/data, e faz o mapeamento para gerar a grade.
+  * A estrutura visual é organizada por meio das classes definidas em ProductList.module.css.
+  * Inclui o identificador id="produtos" para permitir navegação interna (âncora).
+  * O layout interno (gradeProdutos) apresenta os cards de produtos em uma grade responsiva.
+
 
 ### `components/ProductCard.js`
 
 ```javascript
-"use client"; // Precisa ser client por causa do botão "Adicionar"
+
+"use client"; 
 
 import { useAppContext } from "@/context/AppContext";
 import Image from "next/image";
+import Link from "next/link"; 
 
-export default function ProductCard({ produto, descricao, precoAntigo, etiqueta }) {
+import styles from './ProductCard.module.css';
+
+export default function ProductCard({ produto }) { 
     const { addToCart } = useAppContext();
 
     const formatPrice = (price) => {
@@ -510,24 +511,38 @@ export default function ProductCard({ produto, descricao, precoAntigo, etiqueta 
     };
 
     return (
-        <article className="cartao-produto">
-            <figure className="imagem-produto">
-                <Image src={produto.imagem} alt={produto.nome} width={300} height={200} style={{ objectFit: 'scale-down', width: '100%', height: '200px' }} />
-                {etiqueta && (
-                    <figcaption className="etiqueta-produto">{etiqueta}</figcaption>
+        <article className={styles.cartaoProduto}>
+            <figure className={styles.imagemProdutoContainer}>
+                <Link href={`/produtos/${produto.id}`}>
+                    <Image 
+                        src={produto.imagem} 
+                        alt={produto.nome} 
+                        width={300} 
+                        height={200} 
+                        className={styles.imagemTag} 
+                    />
+                </Link>
+                {produto.etiqueta && (
+                    <figcaption className={styles.etiquetaProduto}>{produto.etiqueta}</figcaption>
                 )}
             </figure>
-            <section className="info-produto">
-                <h3>{produto.nome}</h3>
-                <p className="descricao-produto">{descricao}</p>
-                <section className="preco-produto">
-                    {precoAntigo && (
-                        <span className="preco-antigo">{precoAntigo}</span>
+            
+            <section className={styles.infoProduto}>
+                <h3>
+                    <Link href={`/produtos/${produto.id}`} className={styles.produtoTitulo}>
+                        {produto.nome}
+                    </Link>
+                </h3>
+                <p className={styles.descricaoProduto}>{produto.descricao}</p>
+                
+                <section className={styles.precoProduto}>
+                    {produto.precoAntigo && (
+                        <span className={styles.precoAntigo}>{produto.precoAntigo}</span>
                     )}
-                    <span className="preco-atual">R$ {formatPrice(produto.preco)}</span>
+                    <span className={styles.precoAtual}>R$ {formatPrice(produto.preco)}</span>
                 </section>
-                {/* Botão chama a função addToCart do context */}
-                <button className="botao-adicionar" onClick={() => addToCart(produto)}>
+                
+                <button className={styles.botaoAdicionar} onClick={() => addToCart(produto)}>
                     Adicionar ao Carrinho
                 </button>
             </section>
@@ -535,56 +550,66 @@ export default function ProductCard({ produto, descricao, precoAntigo, etiqueta 
     );
 }
 ```
+Um **Componente de Cliente** que renderiza o cartão individual de cada produto na loja.
 
-Um **Componente de Cliente** (`"use client"`) que renderiza um único card de produto.
-
-* **Propósito**: Exibir as informações de um produto e permitir que ele seja adicionado ao carrinho.
+* **Propósito**: Exibir informações detalhadas de um produto e permitir sua adição ao carrinho.
 * **Funcionalidade**:
-    * Recebe os dados do produto (incluindo `descricao`, `precoAntigo`, `etiqueta`) via `props`.
-    * Utiliza `useAppContext` para acessar a função `addToCart`.
-    * O botão "Adicionar ao Carrinho" chama `addToCart(produto)` quando clicado, enviando os dados do produto para o estado global.
-    * Inclui uma função `formatPrice` para formatar o valor monetário.
+
+  * Importa e utiliza o contexto global da aplicação (`useAppContext`) para acessar a função `addToCart`.
+  * Renderiza imagem, nome, descrição, preço e, se houver, etiqueta promocional do produto.
+  * Usa o componente `next/link` para criar links dinâmicos para a página de detalhes de cada produto.
+  * O preço é formatado por meio da função `formatPrice`, que converte o valor numérico para o formato brasileiro (duas casas decimais e vírgula).
+  * O layout e o estilo visual são definidos em `ProductCard.module.css`, garantindo consistência e responsividade.
+  * O botão “Adicionar ao Carrinho” chama `addToCart(produto)` ao ser clicado, permitindo interação direta com o sistema de compras.
 
 ### `components/Newsletter.js`
-
 
 ```javascript
 "use client";
 
 import { useState } from 'react';
+import styles from './Newsletter.module.css'; // Importa o módulo
 
 export default function Newsletter() {
     const [email, setEmail] = useState('');
+    // Estado para a mensagem de feedback (substituindo o alert)
+    const [message, setMessage] = useState(''); 
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // Impede o recarregamento da página
+        event.preventDefault(); 
         if (email) {
-            alert(`Obrigado por se inscrever!\nSeu e-mail ${email} foi cadastrado com sucesso.`);
+            // Define a mensagem de sucesso
+            setMessage(`Obrigado por se inscrever! E-mail cadastrado.`);
             setEmail(''); // Limpa o input
+            
+            // Limpa a mensagem após 3 segundos
+            setTimeout(() => {
+                setMessage('');
+            }, 3000);
         }
     };
 
     return (
-        <section className="secao-newsletter">
-            <section className="conteudo-newsletter">
+        <section className={styles.secaoNewsletter}>
+            <section className={styles.conteudoNewsletter}>
                 <h2>Fique por Dentro das Novidades</h2>
                 <p>Receba ofertas especiais e lançamentos direto no seu e-mail</p>
-                {/* onSubmit substitui o addEventListener */}
-                <form className="formulario-newsletter" onSubmit={handleSubmit}>
+                <form className={styles.formularioNewsletter} onSubmit={handleSubmit}>
                     <input 
                         type="email" 
                         placeholder="Seu e-mail" 
                         required 
-                        value={email} // Controlado pelo estado
-                        onChange={(e) => setEmail(e.target.value)} // Atualiza o estado
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <button type="submit">Inscrever-se</button>
                 </form>
+                {/* Renderiza a mensagem de feedback aqui */}
+                {message && <p className={styles.mensagemSucesso}>{message}</p>}
             </section>
         </section>
     );
 }
-
 ```
 
 Um **Componente de Cliente** (`"use client"`) que renderiza o formulário de inscrição da newsletter.
@@ -601,43 +626,42 @@ Um **Componente de Cliente** (`"use client"`) que renderiza o formulário de ins
 "use client";
 
 import { useAppContext } from "@/context/AppContext";
-import Image from "next/image"; // Use o componente Image do Next.js para otimização
+import Image from "next/image";
+import styles from './Cart.module.css'; // Importa o módulo CSS
 
 export default function Cart() {
     const { isCartOpen, toggleCart, cartItems, removeFromCart, cartTotal } = useAppContext();
 
-    // Formata o preço para R$ 0,00
     const formatPrice = (price) => {
         return price.toFixed(2).replace('.', ',');
     };
 
     return (
-        // A classe 'aberto' é controlada pelo estado
-        <section id="carrinho" className={`lateral-carrinho ${isCartOpen ? 'aberto' : ''}`}>
-            <section className="cabecalho-carrinho">
+        <section 
+            id="carrinho" 
+            className={`${styles.lateralCarrinho} ${isCartOpen ? styles.aberto : ''}`}
+        >
+            <section className={styles.cabecalhoCarrinho}>
                 <h2>Carrinho de Compras</h2>
-                <button className="fechar-carrinho" onClick={toggleCart}>✕</button>
+                <button className={styles.fecharCarrinho} onClick={toggleCart}>✕</button>
             </section>
             
-            <section className="itens-carrinho">
+            <section className={styles.itensCarrinho}>
                 {cartItems.length === 0 ? (
-                    <p className="carrinho-vazio">Seu carrinho está vazio</p>
+                    <p className={styles.carrinhoVazio}>Seu carrinho está vazio</p>
                 ) : (
-                    // Mapeia os itens do carrinho para renderizar
                     cartItems.map(item => (
-                        <article key={item.id} className="item-carrinho-bloco">
-                            <figure className="imagem-item-carrinho">
-                                {/* Caminho da imagem vem de /public */}
+                        <article key={item.id} className={styles.itemCarrinhoBloco}>
+                            <figure className={styles.imagemItemCarrinho}>
                                 <Image src={item.imagem} alt={item.nome} width={80} height={80} />
                             </figure>
-                            <section className="detalhes-item-carrinho">
-                                <p className="nome-item-carrinho">{item.nome}</p>
-                                <p className="preco-item-carrinho">Preço: R$ {formatPrice(item.preco)}</p>
-                                <p className="quantidade-item-carrinho">Quantidade: {item.quantidade}</p>
+                            <section className={styles.detalhesItemCarrinho}>
+                                <p className={styles.nomeItemCarrinho}>{item.nome}</p>
+                                <p className={styles.precoItemCarrinho}>Preço: R$ {formatPrice(item.preco)}</p>
+                                <p className={styles.quantidadeItemCarrinho}>Quantidade: {item.quantidade}</p>
                             </section>
-                            {/* Botão de remover agora usa a função do context */}
                             <button 
-                                className="botao-remover-item" 
+                                className={styles.botaoRemoverItem} 
                                 data-id={item.id}
                                 onClick={() => removeFromCart(item.id)}
                             >
@@ -648,12 +672,12 @@ export default function Cart() {
                 )}
             </section>
             
-            <section className="rodape-carrinho">
-                <section className="total-carrinho">
-                    {/* Total é calculado dinamicamente */}
+            <section className={styles.rodapeCarrinho}>
+                <section className={styles.totalCarrinho}>
                     <span>Total: R$ {formatPrice(cartTotal)}</span>
                 </section>
-                <button className="botao-finalizar">Finalizar Compra</button>
+                <button className={styles.botaoFinalizar}>Finalizar Compra</button>
+Também corrigi a lógica da classe `aberto` para funcionar corretamente com o módulo.
             </section>
         </section>
     );
@@ -677,11 +701,11 @@ Um **Componente de Cliente** (`"use client"`) que renderiza a barra lateral do c
 "use client";
 
 import { useAppContext } from "@/context/AppContext";
+import styles from './MobileMenu.module.css'; // Importa o módulo
 
 export default function MobileMenu() {
     const { isMenuOpen, toggleMenu, toggleCart } = useAppContext();
 
-    // Função para fechar menu e abrir carrinho
     const handleCartClick = (e) => {
         e.preventDefault();
         toggleMenu();
@@ -689,22 +713,33 @@ export default function MobileMenu() {
     };
     
     return (
-        <nav className={`overlay-menu-mobile ${isMenuOpen ? 'ativo' : ''}`} id="menu-mobile">
-            <section className="conteudo-menu-mobile">
-                <button className="fechar-menu-mobile" id="fechar-menu" onClick={toggleMenu}>✕</button>
-                <ul className="lista-menu-mobile">
+        // Aplica as classes do módulo dinamicamente
+        <nav 
+            className={`${styles.overlayMenuMobile} ${isMenuOpen ? styles.ativo : ''}`} 
+            id="menu-mobile"
+        >
+            <section className={styles.conteudoMenuMobile}>
+                <button 
+                    className={styles.fecharMenuMobile} 
+                    id="fechar-menu" 
+                    onClick={toggleMenu}
+                >
+                    ✕
+                </button>
+                <ul className={styles.listaMenuMobile}>
                     <li><a href="#inicio" onClick={toggleMenu}>Início</a></li>
                     <li><a href="#produtos" onClick={toggleMenu}>Produtos</a></li>
                     <li><a href="#categorias" onClick={toggleMenu}>Categorias</a></li>
                     <li><a href="#sobre" onClick={toggleMenu}>Sobre</a></li>
                     <li><a href="#contato" onClick={toggleMenu}>Contato</a></li>
-                    <li><a href="#carrinho" className="icone-carrinho" onClick={handleCartClick}>🛒 Carrinho</a></li>
+                    <li><a href="#carrinho" className={styles.iconeCarrinho} onClick={handleCartClick}>🛒 Carrinho</a></li>
                     <li><a href="#conta" onClick={toggleMenu}>👤 Conta</a></li>
                 </ul>
             </section>
         </nav>
     );
 }
+
 ```
 
 Um **Componente de Cliente** (`"use client"`) que renderiza o menu de navegação em tela cheia (overlay) para dispositivos móveis.
@@ -810,4 +845,165 @@ Um *hook* customizado que os componentes "consumidores" (como `Header.js`, `Cart
 * **Valores Memoizados (Memo):**
     * `cartTotal`: Um valor calculado usando `useMemo`. Ele "escuta" por mudanças no array `cartItems` e recalcula automaticamente o preço total ( `preço * quantidade` de todos os itens). Isso evita recálculos desnecessários a cada renderização.
  
+### `lib/data.js`
+
+```javascript
+export const produtos = [
+    { 
+        id: "samsung_galaxy", 
+        nome: "Smartphone Samsung Galaxy", 
+        preco: 999.99, 
+        imagem: "/img/samsung galaxy.png",
+        descricao: "Smartphone com tela de 6.1 polegadas e câmera tripla",
+        precoAntigo: "R$ 1.299,99",
+        etiqueta: "Oferta"
+    },
+    { 
+        id: "camiseta_polo", 
+        nome: "Camiseta Polo Masculina", 
+        preco: 89.99, 
+        imagem: "/img/polo.png",
+        descricao: "Camiseta polo de algodão 100% em diversas cores"
+    },
+    { 
+        id: "notebook_lenovo", 
+        nome: "Notebook Lenovo IdeaPad", 
+        preco: 2299.99, 
+        imagem: "/img/lenovo.png",
+        descricao: "Notebook com processador Intel Core i5 e 8GB RAM",
+        etiqueta: "Novo"
+    },
+    { 
+        id: "kit_jardim", 
+        nome: "Kit Jardim Completo", 
+        preco: 79.99, 
+        imagem: "/img/kit.png",
+        descricao: "Kit com ferramentas básicas para jardinagem"
+    },
+    { 
+        id: "tenis_nike", 
+        nome: "Tênis Esportivo Nike", 
+        preco: 299.99, 
+        imagem: "/img/nike.png",
+        descricao: "Tênis para corrida com tecnologia Air Max"
+    },
+    { 
+        id: "kit_maquiagem", 
+        nome: "Kit Maquiagem Completo", 
+        preco: 129.99, 
+        imagem: "/img/maquiagem.png",
+        descricao: "Kit com batom, base, rímel e sombras variadas"
+    },
+];
+
+export function getProductById(id) {
+    return produtos.find(p => p.id === id);
+}
+```
+Um **módulo de dados** que centraliza e exporta as informações estáticas dos produtos da loja.
+
+* **Propósito**: Fornecer uma lista base de produtos para renderização nas páginas e componentes (como `ProductList` e `ProductCard`).
+* **Funcionalidade**:
+
+  * Exporta o array `produtos`, que contém objetos com as principais propriedades de cada item: `id`, `nome`, `preco`, `imagem`, `descricao`, `precoAntigo` (opcional) e `etiqueta` (opcional).
+  * Cada produto representa um item da loja, com imagem e informações associadas para exibição no front-end.
+  * Também exporta a função utilitária `getProductById(id)`, responsável por localizar e retornar um produto específico com base em seu identificador único.
+  * Serve como uma simulação de banco de dados local, útil para protótipos e ambientes de desenvolvimento.
+
+
+### app/produtos/[id]/page.js
+
+```javascript
+"use client";
+
+import { use } from 'react';
+import { getProductById } from "@/lib/data";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { useAppContext } from "@/context/AppContext";
+import styles from './Produto.module.css';
+
+const formatPrice = (price) => {
+    if (typeof price !== 'number') return '0,00';
+    return price.toFixed(2).replace('.', ',');
+};
+
+export default function ProdutoPage({ params }) {
+    const resolvedParams = use(params);
+    const { id } = resolvedParams;
+
+    const produto = getProductById(id);
+    const { addToCart } = useAppContext();
+
+    if (!produto) {
+        notFound();
+    }
+
+    return (
+        <section 
+            className={`destinos-nav ${styles.produtoContainer}`}
+        >
+            <figure>
+                <Image
+                    src={produto.imagem}
+                    alt={produto.nome}
+                    width={500}
+                    height={500}
+                    className={styles.produtoImagem}
+                    priority
+                />
+            </figure>
+            <section className={styles.produtoInfo}>
+                <Link href="/#produtos" className={styles.linkVoltar}>
+                    &larr; Voltar aos produtos
+                </Link>
+                
+                <h1 className={styles.produtoNome}>
+                    {produto.nome}
+                </h1>
+                
+                <p className={styles.produtoDescricao}>
+                    {produto.descricao}
+                </p>
+
+                <section className={`preco-produto ${styles.blocoPreco}`}>
+                    {produto.precoAntigo && (
+                        <span className={styles.precoAntigo}>
+                            {produto.precoAntigo}
+                        </span>
+                    )}
+                    <span className={styles.precoAtual}>
+                        R$ {formatPrice(produto.preco)}
+                    </span>
+                </section>
+
+                <button 
+                    className={`botao-adicionar ${styles.botaoComprar}`} 
+                    onClick={() => addToCart(produto)}
+                >
+                    Adicionar ao Carrinho
+                </button>
+            </section>
+        </section>
+    );
+}
+```
+Um **Componente de Cliente** que representa a página individual de cada produto, renderizada dinamicamente conforme o identificador (`id`) na URL.
+
+* **Propósito**: Exibir detalhes completos de um produto específico e permitir que o usuário o adicione ao carrinho.
+* **Funcionalidade**:
+
+  * Utiliza o hook `use()` para resolver os parâmetros dinâmicos da rota (`params`).
+  * Busca os dados do produto correspondente por meio da função `getProductById(id)` importada de `@/lib/data`.
+  * Caso o produto não seja encontrado, executa `notFound()` para redirecionar à página 404.
+  * Usa `useAppContext()` para acessar a função `addToCart` e possibilitar a adição do produto ao carrinho.
+  * Exibe imagem, nome, descrição, preço atual e antigo (se existir), e um botão de compra.
+  * Inclui um link de retorno (`Voltar aos produtos`) para navegação fluida entre as páginas.
+  * Os estilos são definidos em `Produto.module.css`, enquanto classes globais como `destinos-nav` são aplicadas para consistência no layout.
+
+
+
 ---
+
+
