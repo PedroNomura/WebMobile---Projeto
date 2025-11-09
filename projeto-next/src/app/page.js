@@ -1,17 +1,20 @@
 // ARQUIVO: app/page.js
 
-import MainImage from "@/components/MainImage";
-import Categories from "@/components/Categories";
-import ProductList from "@/components/ProductList";
-import Newsletter from "@/components/Newsletter";
+import MainImage from "@/components/MainImage/MainImage";
+import Categories from "@/components/Categories/Categories";
+import ProductList from "@/components/ProductList/ProductList";
+import Newsletter from "@/components/Newsletter/Newsletter";
 import About from "@/components/about/About";
+import { getAllProducts } from "@/lib/data";
 
-export default function Home() {
+export default async function Home() {
+  const produtos = await getAllProducts();
+  const mainImages = produtos.map(produto => produto.imagem);
   return (
     <>
-      <MainImage />
+      <MainImage images={mainImages}/>
       <Categories />
-      <ProductList />
+      <ProductList produtos={produtos} />
       <Newsletter />
       <About />
     </>
