@@ -194,20 +194,21 @@ Este é o **Layout Raiz** (Root Layout) da aplicação. Ele define a estrutura H
 ### `app/page.js`
 
 ```javascript
-// ARQUIVO: app/page.js
-
 import MainImage from "@/components/MainImage/MainImage";
 import Categories from "@/components/Categories/Categories";
 import ProductList from "@/components/ProductList/ProductList";
 import Newsletter from "@/components/Newsletter/Newsletter";
 import About from "@/components/about/About";
+import { getAllProducts } from "@/lib/data";
 
-export default function Home() {
+export default async function Home() {
+  const produtos = await getAllProducts();
+  const mainImages = produtos.map(produto => produto.imagem);
   return (
     <>
-      <MainImage />
+      <MainImage images={mainImages}/>
       <Categories />
-      <ProductList />
+      <ProductList produtos={produtos} />
       <Newsletter />
       <About />
     </>
@@ -218,12 +219,15 @@ export default function Home() {
 Este arquivo representa a **página inicial** (homepage) do site, acessível pela rota `/`.
 
 * **Propósito**: Servir como a "vitrine" principal da loja.
-* **Estrutura**: Ele simplesmente importa e renderiza, em ordem, os principais componentes que compõem a homepage:
-    * `MainImage`: O banner ou imagem principal.
-    * `Categories`: A seção de categorias de produtos.
-    * `ProductList`: A lista de produtos em destaque.
-    * `Newsletter`: O formulário de inscrição para newsletter.
-    * `About`: A seção "Sobre nós" da loja.
+* **Estrutura**: O componente Home foi transformado em uma função assíncrona (um React Server Component) para executar a busca de dados no lado do servidor:
+  * Ele chama await getAllProducts() para buscar a lista completa de produtos.
+  * Ele extrai as URLs das imagens (mainImages) a partir dos produtos.
+  * Ele renderiza os componentes da página, passando os dados necessários via props:
+    * MainImage: Recebe a lista de imagens (images={mainImages}).
+    * Categories: Renderizado de forma estática.
+    * ProductList: Recebe a lista completa de produtos (produtos={produtos}).
+    * Newsletter: Renderizado de forma estática.
+    * About: Renderizado de forma estática.
 
 ### `components/Header.js`
 
@@ -397,10 +401,11 @@ Um **Componente de Cliente** (`"use client"`) que funciona como o banner princip
 
 * **Propósito**: Exibir um carrossel de imagens de produtos em destaque.
 * **Funcionalidade**:
-    * Define uma lista de `imagens`.
-    * Usa `useState` para controlar o `indice` da imagem atual e o estado de transição (`isFading`).
-    * Usa `useEffect` para criar um `setInterval` que troca a imagem a cada 5 segundos, aplicando um efeito de fade-out (`.fade-out`) durante a transição.
-    * Utiliza o componente `next/image` para otimização das imagens.
+  * Recebe uma lista de URLs de imagens através da prop images.
+  * Possui uma imagem de fallback (reserva) caso a prop images não seja fornecida ou esteja vazia.
+  * Usa useState para controlar o indice da imagem atual e o estado de transição (isFading).
+  * Usa useEffect para criar um setInterval que troca a imagem a cada 5 segundos, aplicando um efeito de fade-out (.fadeOut) durante a transição.
+  * Utiliza o componente next/image para otimização das imagens, com a primeira imagem marcada como priority.
 
 ### `components/Categories.js`
 
@@ -460,10 +465,9 @@ Um **Componente de Servidor** (padrão) que renderiza a seção de categorias de
 
 ```javascript
 import ProductCard from "../ProductCard/ProductCard";
-import { produtos } from "@/lib/data";
 import styles from "./ProductList.module.css"
 
-export default function ProductList() {
+export default function ProductList({ produtos }) {
     return (
         <section id="produtos" className={`${styles.secaoProdutos} destinos-nav`}>
             <h2>Produtos em Destaque</h2>
@@ -485,11 +489,10 @@ Um **Componente de Servidor** (padrão) que renderiza a listagem dos produtos em
 * **Propósito**: Exibir dinamicamente os produtos disponíveis em destaque na página inicial.
 * **Funcionalidade**:
   * Utiliza o componente filho ProductCard para renderizar cada produto individualmente.
-  * Obtém os dados do array produtos, importado de @/lib/data, e faz o mapeamento para gerar a grade.
+  * Recebe a lista de produtos como uma prop (passada por um componente pai, como app/page.js) e faz o mapeamento para gerar a grade.
   * A estrutura visual é organizada por meio das classes definidas em ProductList.module.css.
   * Inclui o identificador id="produtos" para permitir navegação interna (âncora).
   * O layout interno (gradeProdutos) apresenta os cards de produtos em uma grade responsiva.
-
 
 ### `components/ProductCard.js`
 
@@ -848,12 +851,15 @@ Um *hook* customizado que os componentes "consumidores" (como `Header.js`, `Cart
 ### `lib/data.js`
 
 ```javascript
-export const produtos = [
+// lib/data.js
+
+
+const staticProducts = [
     { 
         id: "samsung_galaxy", 
         nome: "Smartphone Samsung Galaxy", 
         preco: 999.99, 
-        imagem: "/img/samsung galaxy.png",
+        imagem: "https://res.cloudinary.com/dsyxtpek7/image/upload/v1762690662/samsung_galaxy_d9pmpr.png",
         descricao: "Smartphone com tela de 6.1 polegadas e câmera tripla",
         precoAntigo: "R$ 1.299,99",
         etiqueta: "Oferta"
@@ -861,55 +867,74 @@ export const produtos = [
     { 
         id: "camiseta_polo", 
         nome: "Camiseta Polo Masculina", 
-        preco: 89.99, 
-        imagem: "/img/polo.png",
-        descricao: "Camiseta polo de algodão 100% em diversas cores"
+        preco: 89.99,
+        imagem: "https://res.cloudinary.com/dsyxtpek7/image/upload/v1762690662/polo_fecfhr.png",
+        descricao: "Camiseta polo de algodão 100% em diversas cores",
+        precoAntigo: null, 
+        etiqueta: null
     },
     { 
         id: "notebook_lenovo", 
         nome: "Notebook Lenovo IdeaPad", 
         preco: 2299.99, 
-        imagem: "/img/lenovo.png",
+        imagem: "https://res.cloudinary.com/dsyxtpek7/image/upload/v1762690662/lenovo_lrxmde.png",
         descricao: "Notebook com processador Intel Core i5 e 8GB RAM",
+        precoAntigo: null,
         etiqueta: "Novo"
     },
     { 
         id: "kit_jardim", 
         nome: "Kit Jardim Completo", 
         preco: 79.99, 
-        imagem: "/img/kit.png",
-        descricao: "Kit com ferramentas básicas para jardinagem"
+        imagem: "https://res.cloudinary.com/dsyxtpek7/image/upload/v1762690662/kit_cyxwle.png",
+        descricao: "Kit com ferramentas básicas para jardinagem",
+        precoAntigo: null,
+        etiqueta: null
     },
     { 
         id: "tenis_nike", 
         nome: "Tênis Esportivo Nike", 
         preco: 299.99, 
-        imagem: "/img/nike.png",
-        descricao: "Tênis para corrida com tecnologia Air Max"
+        imagem: "https://res.cloudinary.com/dsyxtpek7/image/upload/v1762690663/nike_fsadbp.png",
+        descricao: "Tênis para corrida com tecnologia Air Max",
+        precoAntigo: null,
+        etiqueta: null
     },
     { 
         id: "kit_maquiagem", 
         nome: "Kit Maquiagem Completo", 
         preco: 129.99, 
-        imagem: "/img/maquiagem.png",
-        descricao: "Kit com batom, base, rímel e sombras variadas"
+        imagem: "https://res.cloudinary.com/dsyxtpek7/image/upload/v1762690663/maquiagem_qsrvzb.png",
+        descricao: "Kit com batom, base, rímel e sombras variadas",
+        precoAntigo: null,
+        etiqueta: null
     },
 ];
 
-export function getProductById(id) {
-    return produtos.find(p => p.id === id);
+
+
+export async function getAllProducts() {
+    return Promise.resolve(staticProducts);
+}
+
+export async function getProductById(id) {
+    const product = staticProducts.find(p => p.id === id);
+    
+    if (product) {
+        return Promise.resolve(product);
+    } else {
+        return Promise.resolve(null);
+    }
 }
 ```
 Um **módulo de dados** que centraliza e exporta as informações estáticas dos produtos da loja.
 
 * **Propósito**: Fornecer uma lista base de produtos para renderização nas páginas e componentes (como `ProductList` e `ProductCard`).
 * **Funcionalidade**:
-
-  * Exporta o array `produtos`, que contém objetos com as principais propriedades de cada item: `id`, `nome`, `preco`, `imagem`, `descricao`, `precoAntigo` (opcional) e `etiqueta` (opcional).
-  * Cada produto representa um item da loja, com imagem e informações associadas para exibição no front-end.
-  * Também exporta a função utilitária `getProductById(id)`, responsável por localizar e retornar um produto específico com base em seu identificador único.
-  * Serve como uma simulação de banco de dados local, útil para protótipos e ambientes de desenvolvimento.
-
+  * Exporta a função async getAllProducts(), que retorna uma Promise que resolve com a lista completa de produtos.
+  * Exporta a função async getProductById(id), que retorna uma Promise que resolve com um único produto (baseado no id) ou null se não for encontrado.
+  * Utiliza um array interno staticProducts como fonte de dados simulada.
+  * As imagens dos produtos (imagem) são URLs absolutas hospedadas em um serviço externo (Cloudinary).
 
 ### app/produtos/[id]/page.js
 
