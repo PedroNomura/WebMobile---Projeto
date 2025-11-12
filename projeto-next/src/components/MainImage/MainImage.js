@@ -2,27 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from './MainImage.module.css'; // Importa o módulo
+import styles from './MainImage.module.css';
 
-const imagens = [
-    "/img/lenovo.png",
-    "/img/samsung galaxy.png",
-    "/img/polo.png",
-    "/img/kit.png",
-    "/img/nike.png",
-    "/img/maquiagem.png"
-];
 
-export default function Hero() {
+export default function Hero({ images }) {
     const [indice, setIndice] = useState(0); 
-    const [isFading, setIsFading] = useState(false);
-
+    const [isFading, setIsFading] = useState(false)
+    const imageList = images && images.length > 0 ? images : ["/img/lenovo.png"];
     useEffect(() => {
         const interval = setInterval(() => {
             setIsFading(true); 
 
             setTimeout(() => {
-                setIndice((prevIndice) => (prevIndice + 1) % imagens.length);
+                setIndice((prevIndice) => (prevIndice + 1) % imageList.length);
                 setIsFading(false); 
             }, 1000); 
 
@@ -34,7 +26,6 @@ export default function Hero() {
     return (
         <section 
             id="inicio" 
-            // 'destinos-nav' (global) é mantido, 'secaoPrincipal' (módulo) é adicionado
             className={`${styles.secaoPrincipal} destinos-nav`}
         >
             <section className={styles.conteudoPrincipal}>
@@ -43,12 +34,11 @@ export default function Hero() {
             </section>
             <figure className={styles.imagemPrincipal}>
                 <Image
-                    src={imagens[indice]}
+                    src={imageList[indice]}
                     alt="Produtos em destaque"
                     width={500}
                     height={300}
                     style={{ objectFit: 'scale-down', width: '100%', height: '300px' }}
-                    // Classe do módulo para o fade-out
                     className={`${styles.imagemHero} ${isFading ? styles.fadeOut : ''}`}
                     priority
                 />
