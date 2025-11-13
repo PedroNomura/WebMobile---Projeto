@@ -1,6 +1,7 @@
 "use client";
 
-import { use } from 'react';
+// 1. Importamos 'useState' e 'useEffect'
+import { use, useState, useEffect } from 'react';
 import { getProductById } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,9 +17,26 @@ const formatPrice = (price) => {
 export default function ProdutoPage({ params }) {
     const resolvedParams = use(params);
     const { id } = resolvedParams;
-
-    const produto = getProductById(id);
     const { addToCart } = useAppContext();
+
+    const [produto, setProduto] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (id) {
+            const fetchProduct = async () => {
+                const data = await getProductById(id); 
+                
+                setProduto(data);
+                setLoading(false);
+            };
+
+            fetchProduct();
+        }
+    }, [id]);
+    if (loading) {
+        return <p style={{ textAlign: 'center', padding: '50px' }}>Carregando produto...</p>;
+    }
 
     if (!produto) {
         notFound();
@@ -64,7 +82,7 @@ export default function ProdutoPage({ params }) {
 
                 <button 
                     className={`botao-adicionar ${styles.botaoComprar}`} 
-                    onClick={() => addToCart(produto)}
+                    onClick={() => addToCart(produto)} 
                 >
                     Adicionar ao Carrinho
                 </button>
