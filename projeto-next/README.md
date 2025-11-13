@@ -1,4 +1,4 @@
-# 123 Realiza
+{# 123 Realiza
 
 ## Integrantes
 
@@ -941,7 +941,7 @@ Um **módulo de dados** que centraliza e exporta as informações estáticas dos
 ```javascript
 "use client";
 
-import { use } from 'react';
+import { use, useState, useEffect } from 'react';
 import { getProductById } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -957,9 +957,26 @@ const formatPrice = (price) => {
 export default function ProdutoPage({ params }) {
     const resolvedParams = use(params);
     const { id } = resolvedParams;
-
-    const produto = getProductById(id);
     const { addToCart } = useAppContext();
+
+    const [produto, setProduto] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (id) {
+            const fetchProduct = async () => {
+                const data = await getProductById(id); 
+                
+                setProduto(data);
+                setLoading(false);
+            };
+
+            fetchProduct();
+        }
+    }, [id]);
+    if (loading) {
+        return <p style={{ textAlign: 'center', padding: '50px' }}>Carregando produto...</p>;
+    }
 
     if (!produto) {
         notFound();
@@ -1005,7 +1022,7 @@ export default function ProdutoPage({ params }) {
 
                 <button 
                     className={`botao-adicionar ${styles.botaoComprar}`} 
-                    onClick={() => addToCart(produto)}
+                    onClick={() => addToCart(produto)} 
                 >
                     Adicionar ao Carrinho
                 </button>
@@ -1014,20 +1031,20 @@ export default function ProdutoPage({ params }) {
     );
 }
 ```
-Um **Componente de Cliente** que representa a página individual de cada produto, renderizada dinamicamente conforme o identificador (`id`) na URL.
+Um **Componente de Cliente** (`"use client"`) que representa a página individual de cada produto, renderizada dinamicamente conforme o identificador (`id`) na URL.
 
 * **Propósito**: Exibir detalhes completos de um produto específico e permitir que o usuário o adicione ao carrinho.
 * **Funcionalidade**:
-
-  * Utiliza o hook `use()` para resolver os parâmetros dinâmicos da rota (`params`).
-  * Busca os dados do produto correspondente por meio da função `getProductById(id)` importada de `@/lib/data`.
-  * Caso o produto não seja encontrado, executa `notFound()` para redirecionar à página 404.
-  * Usa `useAppContext()` para acessar a função `addToCart` e possibilitar a adição do produto ao carrinho.
-  * Exibe imagem, nome, descrição, preço atual e antigo (se existir), e um botão de compra.
-  * Inclui um link de retorno (`Voltar aos produtos`) para navegação fluida entre as páginas.
-  * Os estilos são definidos em `Produto.module.css`, enquanto classes globais como `destinos-nav` são aplicadas para consistência no layout.
-
-
+    * Utiliza o hook `use()` para resolver os parâmetros dinâmicos da rota (`params`) e obter o `id` do produto.
+    * Usa `useState` para gerenciar o estado local do `produto` e um booleano de `loading`.
+    * Emprega o hook `useEffect` para disparar a busca de dados assim que o componente é montado (ou quando o `id` muda).
+    * Dentro do `useEffect`, ele chama a função **assíncrona** `getProductById(id)` (de `@/lib/data`) e atualiza o estado com os dados recebidos.
+    * Exibe uma mensagem de "Carregando" enquanto a busca de dados está em andamento (`loading === true`).
+    * Caso a função retorne `null` (produto não encontrado), executa `notFound()` para redirecionar à página 404.
+    * Usa `useAppContext()` para acessar a função `addToCart` e possibilitar a adição do produto (agora vindo do `useState`) ao carrinho.
+    * Exibe imagem, nome, descrição, preço atual e antigo (se existir), e um botão de compra.
+    * Inclui um link de retorno (`Voltar aos produtos`) para navegação.
+    * Os estilos específicos da página são carregados via `Produto.module.css`.
 
 ---
 
